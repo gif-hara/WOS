@@ -226,6 +226,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "jp.hadashikick.vitalrouter": {
+      "version": "https://github.com/hadashiA/VitalRouter.git?path=/src/VitalRouter.Unity/Assets/VitalRouter#1.7.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "5cfb76faeaa42bfb4f89fc162b3a811fbcc0384d"
+    },
     "nuget-packages": {
       "version": "file:nuget-packages",
       "depth": 0,
