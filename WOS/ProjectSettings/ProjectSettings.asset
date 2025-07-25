@@ -817,7 +817,8 @@ PlayerSettings:
   webGLCloseOnQuit: 0
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Standalone: VITALROUTER_UNITASK_INTEGRATION
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
