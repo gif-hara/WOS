@@ -32,5 +32,10 @@ namespace WOS.ActorControllers
                 })
                 .RegisterTo(actor.destroyCancellationToken);
         }
+
+        public void Move(Vector3 velocity)
+        {
+            this.velocity += velocity;
+        }
     }
 }
