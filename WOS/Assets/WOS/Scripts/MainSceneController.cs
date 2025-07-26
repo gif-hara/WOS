@@ -1,19 +1,15 @@
 using UnityEngine;
+using WOS.ActorControllers;
 
 namespace WOS
 {
     public class MainSceneController : MonoBehaviour
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        [field: SerializeField]
+        private Actor player;
+
         void Start()
         {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
         }
     }
 }
