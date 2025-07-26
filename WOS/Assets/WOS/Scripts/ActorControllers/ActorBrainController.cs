@@ -19,7 +19,7 @@ namespace WOS.ActorControllers
             scope?.Cancel();
             scope?.Dispose();
             scope = CancellationTokenSource.CreateLinkedTokenSource(actor.destroyCancellationToken);
-            brain.Activate(scope.Token);
+            brain.Activate(actor, scope.Token);
         }
     }
 }
