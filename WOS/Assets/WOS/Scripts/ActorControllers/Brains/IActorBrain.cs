@@ -4,6 +4,6 @@ namespace WOS.ActorControllers.Brains
 {
     public interface IActorBrain
     {
-        void Activate(CancellationToken cancellationToken);
+        void Activate(Actor actor, CancellationToken cancellationToken);
     }
 }
