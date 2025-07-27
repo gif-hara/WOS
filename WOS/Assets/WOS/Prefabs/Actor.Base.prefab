@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1426947342277904789}
   - component: {fileID: 8243896889551104288}
   - component: {fileID: -1152602945240121680}
+  - component: {fileID: 3982311088053279130}
   - component: {fileID: 1355235936141589304}
   m_Layer: 7
   m_Name: Actor.Base
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40777780a6d14bc45b8a08ab0ee0065a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  document: {fileID: 3982311088053279130}
   characterController: {fileID: 1355235936141589304}
 --- !u!136 &8243896889551104288
 CapsuleCollider:
@@ -99,6 +101,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3982311088053279130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145665151460682796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be242ed958f53745b0c3a8e632df324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elements: []
 --- !u!114 &1355235936141589304
 MonoBehaviour:
   m_ObjectHideFlags: 0

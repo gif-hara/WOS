@@ -1,3 +1,4 @@
+using HK;
 using StandardAssets.Characters.Physics;
 using UnityEngine;
 
@@ -5,6 +6,9 @@ namespace WOS.ActorControllers
 {
     public sealed class Actor : MonoBehaviour
     {
+        [field: SerializeField]
+        private HKUIDocument document;
+
         [field: SerializeField]
         private OpenCharacterController characterController;
 
