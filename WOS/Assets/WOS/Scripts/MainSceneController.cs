@@ -11,6 +11,9 @@ namespace WOS
         private Actor player;
 
         [field: SerializeField]
+        private MasterData masterData;
+
+        [field: SerializeField]
         private PlayerInput playerInput;
 
         [field: SerializeField]
@@ -18,7 +21,7 @@ namespace WOS
 
         void Start()
         {
-            var playerBrain = new Player(playerInput, worldCamera);
+            var playerBrain = new Player(masterData.PlayerSpec, playerInput, worldCamera);
             player.BrainController.Change(playerBrain);
         }
     }

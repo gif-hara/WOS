@@ -8,12 +8,15 @@ namespace WOS.ActorControllers.Brains
 {
     public class Player : IActorBrain
     {
+        private readonly PlayerSpec playerSpec;
+
         private readonly PlayerInput playerInput;
 
         private readonly Camera camera;
 
-        public Player(PlayerInput playerInput, Camera camera)
+        public Player(PlayerSpec playerSpec, PlayerInput playerInput, Camera camera)
         {
+            this.playerSpec = playerSpec;
             this.playerInput = playerInput;
             this.camera = camera;
         }
@@ -30,7 +33,7 @@ namespace WOS.ActorControllers.Brains
                     {
                         moveDirection = @this.camera.transform.TransformDirection(moveDirection);
                         moveDirection.y = 0; // Keep movement on the horizontal plane
-                        actor.MovementController.Move(moveDirection * Time.deltaTime);
+                        actor.MovementController.Move(moveDirection * @this.playerSpec.MoveSpeed * Time.deltaTime);
                     }
                 })
                 .RegisterTo(actor.destroyCancellationToken);
