@@ -16,10 +16,13 @@ namespace WOS.ActorControllers
 
         public ActorBrainController BrainController { get; private set; }
 
+        public ActorInteractionController InteractionController { get; private set; }
+
         private void Awake()
         {
             MovementController = new ActorMovementController(this, characterController);
             BrainController = new ActorBrainController(this);
+            InteractionController = new ActorInteractionController(this);
 
             MovementController.Activate();
         }
