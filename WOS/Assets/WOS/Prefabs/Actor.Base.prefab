@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40777780a6d14bc45b8a08ab0ee0065a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  document: {fileID: 3982311088053279130}
+  <Document>k__BackingField: {fileID: 3982311088053279130}
   characterController: {fileID: 1355235936141589304}
 --- !u!136 &8243896889551104288
 CapsuleCollider:

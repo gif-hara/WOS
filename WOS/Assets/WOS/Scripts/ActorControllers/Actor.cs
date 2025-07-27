@@ -7,7 +7,7 @@ namespace WOS.ActorControllers
     public sealed class Actor : MonoBehaviour
     {
         [field: SerializeField]
-        private HKUIDocument document;
+        public HKUIDocument Document { get; private set; }
 
         [field: SerializeField]
         private OpenCharacterController characterController;
