@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 
 namespace WOS.ActorControllers
@@ -10,6 +11,8 @@ namespace WOS.ActorControllers
         private readonly List<IInteraction> interactions = new();
 
         private IInteraction currentInteraction;
+
+        private CancellationTokenSource interactScope;
 
         public ActorInteractionController(Actor actor)
         {
@@ -32,6 +35,8 @@ namespace WOS.ActorControllers
             interactions.Remove(interaction);
             if (interaction == currentInteraction)
             {
+                interactScope?.Cancel();
+                interactScope?.Dispose();
                 currentInteraction = null;
                 if (interactions.Count > 0)
                 {
@@ -43,10 +48,24 @@ namespace WOS.ActorControllers
 
         private async UniTask BeginInteraction(IInteraction interaction)
         {
-            actor.MovementController.BeginLookAt(interaction.Transform);
-            await interaction.InteractAsync(actor, actor.destroyCancellationToken);
-            actor.MovementController.EndLookAt();
-            RemoveInteraction(interaction);
+            interactScope = CancellationTokenSource.CreateLinkedTokenSource(actor.destroyCancellationToken);
+            try
+            {
+                var scope = interactScope.Token;
+                actor.MovementController.BeginLookAt(interaction.Transform);
+                await interaction.InteractAsync(actor, scope);
+                if (!scope.IsCancellationRequested)
+                {
+                    interactScope.Cancel();
+                    interactScope.Dispose();
+                    interactScope = null;
+                }
+                RemoveInteraction(interaction);
+            }
+            finally
+            {
+                actor.MovementController.EndLookAt();
+            }
         }
     }
 }
