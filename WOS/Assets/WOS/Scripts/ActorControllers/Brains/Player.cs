@@ -34,6 +34,7 @@ namespace WOS.ActorControllers.Brains
                         moveDirection = @this.camera.transform.TransformDirection(moveDirection);
                         moveDirection.y = 0; // Keep movement on the horizontal plane
                         actor.MovementController.Move(moveDirection * @this.playerSpec.MoveSpeed * Time.deltaTime);
+                        actor.MovementController.Rotate(Quaternion.LookRotation(moveDirection));
                     }
                 })
                 .RegisterTo(actor.destroyCancellationToken);
