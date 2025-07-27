@@ -30,7 +30,7 @@ namespace WOS.ActorControllers.Brains
                     {
                         moveDirection = @this.camera.transform.TransformDirection(moveDirection);
                         moveDirection.y = 0; // Keep movement on the horizontal plane
-                        actor.MovementController.Move(moveDirection);
+                        actor.MovementController.Move(moveDirection * Time.deltaTime);
                     }
                 })
                 .RegisterTo(actor.destroyCancellationToken);
