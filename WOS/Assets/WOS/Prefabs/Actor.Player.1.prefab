@@ -70,6 +70,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1355235936141589304, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2145665151460682796, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
       propertyPath: m_Name
       value: Actor.Player.1
@@ -113,6 +117,14 @@ PrefabInstance:
     - target: {fileID: 4558396081667932014, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8243896889551104288, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: m_Height
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8243896889551104288, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: m_Center.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
