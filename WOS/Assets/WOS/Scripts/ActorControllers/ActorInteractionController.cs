@@ -43,7 +43,9 @@ namespace WOS.ActorControllers
 
         private async UniTask BeginInteraction(IInteraction interaction)
         {
+            actor.MovementController.BeginLookAt(interaction.Transform);
             await interaction.InteractAsync(actor, actor.destroyCancellationToken);
+            actor.MovementController.EndLookAt();
             RemoveInteraction(interaction);
         }
     }
