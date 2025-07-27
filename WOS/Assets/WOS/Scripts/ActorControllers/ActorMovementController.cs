@@ -15,6 +15,8 @@ namespace WOS.ActorControllers
 
         private Quaternion rotation;
 
+        private Transform lookAtTarget;
+
         public ActorMovementController(Actor actor, OpenCharacterController characterController)
         {
             this.actor = actor;
@@ -33,7 +35,10 @@ namespace WOS.ActorControllers
                     }
 
                     var currentRotation = @this.characterController.transform.rotation;
-                    @this.characterController.transform.rotation = Quaternion.Slerp(currentRotation, @this.rotation, Time.deltaTime * 10f);
+                    var targetRotation = @this.lookAtTarget != null
+                        ? Quaternion.LookRotation(@this.lookAtTarget.position - @this.characterController.transform.position)
+                        : @this.rotation;
+                    @this.characterController.transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * 10f);
                 })
                 .RegisterTo(actor.destroyCancellationToken);
         }
@@ -46,6 +51,16 @@ namespace WOS.ActorControllers
         public void Rotate(Quaternion rotation)
         {
             this.rotation = rotation;
+        }
+
+        public void BeginLookAt(Transform target)
+        {
+            this.lookAtTarget = target;
+        }
+
+        public void EndLookAt()
+        {
+            this.lookAtTarget = null;
         }
     }
 }
