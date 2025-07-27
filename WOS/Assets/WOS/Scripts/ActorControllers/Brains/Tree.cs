@@ -10,10 +10,13 @@ namespace WOS.ActorControllers.Brains
     [Serializable]
     public sealed class Tree : IActorBrain, IInteraction
     {
+        private Actor actor;
+
+        public Transform Transform => actor.transform;
+
         public void Activate(Actor actor, CancellationToken cancellationToken)
         {
-            Debug.Log("Tree brain activated");
-
+            this.actor = actor;
             actor.Document.Q<Collider>("Trigger")
                 .OnTriggerEnterAsObservable()
                 .Subscribe((this, actor), static (x, t) =>
