@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using R3;
 using R3.Triggers;
 using UnityEngine;
+using VitalRouter.R3;
 
 namespace WOS.ActorControllers.Brains
 {
@@ -62,7 +63,8 @@ namespace WOS.ActorControllers.Brains
         public async UniTask InteractAsync(Actor actor, CancellationToken cancellationToken)
         {
             Debug.Log("Begin interaction with Tree");
-            await UniTask.Delay(1000, cancellationToken: cancellationToken); // Simulate some interaction delay
+            actor.AnimationController.RequestAttack();
+            await actor.Router.AsObservable<ActorEvent.OnAttack>().FirstAsync(cancellationToken: cancellationToken);
             SceneViewTree.SetActive(false);
             SceneViewStump.SetActive(true);
             Trigger.enabled = false;
