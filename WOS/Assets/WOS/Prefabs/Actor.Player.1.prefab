@@ -81,6 +81,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b6dc8cc0ab18294aa3345541b5c64d2, type: 3}
+--- !u!1 &5144221080140290981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5166272526344537237, guid: 6b6dc8cc0ab18294aa3345541b5c64d2, type: 3}
+  m_PrefabInstance: {fileID: 59031322067656496}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7789448649818842979 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7838540347577727059, guid: 6b6dc8cc0ab18294aa3345541b5c64d2, type: 3}
@@ -97,6 +102,18 @@ PrefabInstance:
     - target: {fileID: 2145665151460682796, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
       propertyPath: m_Name
       value: Actor.Player.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982311088053279130, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: elements.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982311088053279130, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: elements.Array.data[0].document
+      value: 
+      objectReference: {fileID: 5144221080140290981}
+    - target: {fileID: 3982311088053279130, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: elements.Array.data[0].overrideName
+      value: Animator
       objectReference: {fileID: 0}
     - target: {fileID: 4378182936343901407, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
       propertyPath: m_Layer
