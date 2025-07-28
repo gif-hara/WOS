@@ -1,6 +1,5 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using VitalRouter;
 
 namespace WOS.ActorControllers
 {
