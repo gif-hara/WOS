@@ -18,10 +18,13 @@ namespace WOS.ActorControllers
 
         public ActorInteractionController InteractionController { get; private set; }
 
+        public ActorAnimationController AnimationController { get; private set; }
+
         private void Awake()
         {
             MovementController = new ActorMovementController(this, characterController);
             BrainController = new ActorBrainController(this);
+            AnimationController = new ActorAnimationController(Document.Q<Animator>("Animator"));
             InteractionController = new ActorInteractionController(this);
 
             MovementController.Activate();
