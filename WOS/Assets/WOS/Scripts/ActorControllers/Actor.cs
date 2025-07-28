@@ -1,6 +1,7 @@
 using HK;
 using StandardAssets.Characters.Physics;
 using UnityEngine;
+using VitalRouter;
 
 namespace WOS.ActorControllers
 {
@@ -11,6 +12,8 @@ namespace WOS.ActorControllers
 
         [field: SerializeField]
         private OpenCharacterController characterController;
+
+        public readonly Router Router = new();
 
         public ActorMovementController MovementController { get; private set; }
 
