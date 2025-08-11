@@ -68,5 +68,17 @@ namespace WOS
             }
             return isFilleds[index];
         }
+
+        public bool IsAllFilled()
+        {
+            foreach (var isFilled in isFilleds)
+            {
+                if (!isFilled)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
