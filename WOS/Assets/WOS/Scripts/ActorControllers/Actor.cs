@@ -1,36 +1,53 @@
+using System;
+using System.Collections.Generic;
 using HK;
-using StandardAssets.Characters.Physics;
 using UnityEngine;
+using UnityEngine.Assertions;
 using VitalRouter;
+using WOS.ActorControllers.Abilities;
 
 namespace WOS.ActorControllers
 {
-    public sealed class Actor : MonoBehaviour
+    public class Actor : MonoBehaviour
     {
         [field: SerializeField]
         public HKUIDocument Document { get; private set; }
 
-        [field: SerializeField]
-        private OpenCharacterController characterController;
+        public Router Router { get; } = new Router();
 
-        public readonly Router Router = new();
+        private readonly Dictionary<Type, IActorAbility> abilities = new();
 
-        public ActorMovementController MovementController { get; private set; }
-
-        public ActorBrainController BrainController { get; private set; }
-
-        public ActorInteractionController InteractionController { get; private set; }
-
-        public ActorAnimationController AnimationController { get; private set; }
-
-        private void Awake()
+        public T AddAbility<T>() where T : IActorAbility, new()
         {
-            MovementController = new ActorMovementController(this, characterController);
-            BrainController = new ActorBrainController(this);
-            AnimationController = new ActorAnimationController(Document.Q<Animator>("Animator"));
-            InteractionController = new ActorInteractionController(this);
+            var instance = new T();
+            abilities[typeof(T)] = instance;
+            instance.Activate(this);
+            return instance;
+        }
 
-            MovementController.Activate();
+        public T AddAbility<T>(T ability) where T : IActorAbility
+        {
+            abilities[typeof(T)] = ability;
+            ability.Activate(this);
+            return ability;
+        }
+
+        public T GetAbility<T>() where T : class, IActorAbility
+        {
+            abilities.TryGetValue(typeof(T), out var ability);
+            Assert.IsNotNull(ability, $"Ability of type {typeof(T)} not found on actor {name}.");
+            return ability as T;
+        }
+
+        public bool TryGetAbility<T>(out T ability) where T : class, IActorAbility
+        {
+            if (abilities.TryGetValue(typeof(T), out var foundAbility))
+            {
+                ability = foundAbility as T;
+                return ability != null;
+            }
+            ability = null;
+            return false;
         }
     }
 }

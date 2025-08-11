@@ -3,6 +3,7 @@ using R3;
 using R3.Triggers;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using WOS.ActorControllers.Abilities;
 
 namespace WOS.ActorControllers.Brains
 {
@@ -14,6 +15,8 @@ namespace WOS.ActorControllers.Brains
 
         private readonly Camera camera;
 
+        private ActorMovementController movementController;
+
         public Player(PlayerSpec playerSpec, PlayerInput playerInput, Camera camera)
         {
             this.playerSpec = playerSpec;
@@ -23,6 +26,9 @@ namespace WOS.ActorControllers.Brains
 
         public void Activate(Actor actor, CancellationToken cancellationToken)
         {
+            movementController = actor.AddAbility<ActorMovementController>();
+            actor.AddAbility<ActorInteractionController>();
+            actor.AddAbility<ActorAnimationController>();
             actor.UpdateAsObservable()
                 .Subscribe((this, actor), static (_, t) =>
                 {
@@ -38,8 +44,8 @@ namespace WOS.ActorControllers.Brains
                         right.y = 0;
                         right.Normalize();
                         var moveVelocity = forward * moveDirection.z + right * moveDirection.x;
-                        actor.MovementController.Move(moveVelocity * @this.playerSpec.MoveSpeed * Time.deltaTime);
-                        actor.MovementController.Rotate(Quaternion.LookRotation(moveVelocity));
+                        @this.movementController.Move(moveVelocity * @this.playerSpec.MoveSpeed * Time.deltaTime);
+                        @this.movementController.Rotate(Quaternion.LookRotation(moveVelocity));
                     }
                 })
                 .RegisterTo(actor.destroyCancellationToken);

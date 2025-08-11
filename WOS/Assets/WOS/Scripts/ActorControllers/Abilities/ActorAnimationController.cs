@@ -1,19 +1,19 @@
 using UnityEngine;
 
-namespace WOS.ActorControllers
+namespace WOS.ActorControllers.Abilities
 {
-    public class ActorAnimationController
+    public class ActorAnimationController : IActorAbility
     {
-        private readonly Animator animator;
+        private Animator animator;
 
         private readonly int
             IdleHash = Animator.StringToHash("Idle"),
             AttackHash = Animator.StringToHash("Attack");
 
 
-        public ActorAnimationController(Animator animator)
+        public void Activate(Actor actor)
         {
-            this.animator = animator;
+            animator = actor.Document.Q<Animator>("Animator");
         }
 
         public void RequestAttack()

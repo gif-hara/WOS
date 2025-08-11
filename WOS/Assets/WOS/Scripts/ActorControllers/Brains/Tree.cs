@@ -5,6 +5,7 @@ using R3;
 using R3.Triggers;
 using UnityEngine;
 using VitalRouter.R3;
+using WOS.ActorControllers.Abilities;
 
 namespace WOS.ActorControllers.Brains
 {
@@ -39,7 +40,7 @@ namespace WOS.ActorControllers.Brains
                     {
                         return;
                     }
-                    collidedActor.InteractionController.AddInteraction(@this);
+                    collidedActor.GetAbility<ActorInteractionController>().AddInteraction(@this);
                 })
                 .RegisterTo(cancellationToken);
             Trigger
@@ -55,7 +56,7 @@ namespace WOS.ActorControllers.Brains
                     {
                         return;
                     }
-                    collidedActor.InteractionController.RemoveInteraction(@this);
+                    collidedActor.GetAbility<ActorInteractionController>().RemoveInteraction(@this);
                 })
                 .RegisterTo(cancellationToken);
         }
@@ -63,7 +64,7 @@ namespace WOS.ActorControllers.Brains
         public async UniTask InteractAsync(Actor actor, CancellationToken cancellationToken)
         {
             Debug.Log("Begin interaction with Tree");
-            actor.AnimationController.RequestAttack();
+            actor.GetAbility<ActorAnimationController>().RequestAttack();
             await actor.Router.AsObservable<ActorEvent.OnAttack>().FirstAsync(cancellationToken: cancellationToken);
             SceneViewTree.SetActive(false);
             SceneViewStump.SetActive(true);

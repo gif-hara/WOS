@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-namespace WOS.ActorControllers
+namespace WOS.ActorControllers.Abilities
 {
-    public class ActorInteractionController
+    public class ActorInteractionController : IActorAbility
     {
-        private readonly Actor actor;
+        private Actor actor;
 
         private readonly List<IInteraction> interactions = new();
 
@@ -14,7 +14,7 @@ namespace WOS.ActorControllers
 
         private CancellationTokenSource interactScope;
 
-        public ActorInteractionController(Actor actor)
+        public void Activate(Actor actor)
         {
             this.actor = actor;
         }
@@ -52,7 +52,7 @@ namespace WOS.ActorControllers
             try
             {
                 var scope = interactScope.Token;
-                actor.MovementController.BeginLookAt(interaction.Transform);
+                actor.GetAbility<ActorMovementController>().BeginLookAt(interaction.Transform);
                 await interaction.InteractAsync(actor, scope);
                 if (!scope.IsCancellationRequested)
                 {
@@ -64,7 +64,7 @@ namespace WOS.ActorControllers
             }
             finally
             {
-                actor.MovementController.EndLookAt();
+                actor.GetAbility<ActorMovementController>().EndLookAt();
             }
         }
     }

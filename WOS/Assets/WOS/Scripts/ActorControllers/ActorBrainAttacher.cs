@@ -1,5 +1,6 @@
 using TNRD;
 using UnityEngine;
+using WOS.ActorControllers.Abilities;
 using WOS.ActorControllers.Brains;
 
 namespace WOS.ActorControllers
@@ -14,7 +15,7 @@ namespace WOS.ActorControllers
 
         void Start()
         {
-            actor.BrainController.Change(brain.Value);
+            actor.AddAbility<ActorBrainController>().Change(brain.Value);
         }
     }
 }

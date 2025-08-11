@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using WOS.ActorControllers;
+using WOS.ActorControllers.Abilities;
 using WOS.ActorControllers.Brains;
 
 namespace WOS
@@ -22,7 +23,7 @@ namespace WOS
         void Start()
         {
             var playerBrain = new Player(masterData.PlayerSpec, playerInput, worldCamera);
-            player.BrainController.Change(playerBrain);
+            player.AddAbility<ActorBrainController>().Change(playerBrain);
         }
     }
 }
