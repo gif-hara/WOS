@@ -2,14 +2,13 @@ using R3;
 using R3.Triggers;
 using StandardAssets.Characters.Physics;
 using UnityEngine;
+using UnityEngine.Assertions;
 
-namespace WOS.ActorControllers
+namespace WOS.ActorControllers.Abilities
 {
-    public class ActorMovementController
+    public class ActorMovementController : IActorAbility
     {
-        private readonly Actor actor;
-
-        private readonly OpenCharacterController characterController;
+        private OpenCharacterController characterController;
 
         private Vector3 velocity;
 
@@ -17,14 +16,11 @@ namespace WOS.ActorControllers
 
         private Transform lookAtTarget;
 
-        public ActorMovementController(Actor actor, OpenCharacterController characterController)
+        public void Activate(Actor actor)
         {
-            this.actor = actor;
-            this.characterController = characterController;
-        }
+            characterController = actor.TryGetComponent<OpenCharacterController>(out var controller) ? controller : null;
+            Assert.IsNotNull(characterController, $"{actor.name} must have an {nameof(OpenCharacterController)} component.");
 
-        public void Activate()
-        {
             actor.UpdateAsObservable()
                 .Subscribe(this, static (_, @this) =>
                 {
