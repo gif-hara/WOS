@@ -35,16 +35,16 @@ namespace WOS
             return transform.GetChild(index);
         }
 
-        public int GetLastFilledIndex()
+        public int GetLastNotFilledIndex()
         {
             for (int i = isFilleds.Count - 1; i >= 0; i--)
             {
-                if (isFilleds[i])
+                if (!isFilleds[i])
                 {
                     return i;
                 }
             }
-            return -1; // No filled column found
+            return -1; // No not filled column found
         }
     }
 }
