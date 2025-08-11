@@ -17,4 +17,4 @@ MonoBehaviour:
   <ItemSpecs>k__BackingField:
     list:
     - <Id>k__BackingField: Wood
-      <SceneViewPrefab>k__BackingField: {fileID: 5536219409389268468, guid: 2bb7c435fc610474c894687879470745, type: 3}
+      <ItemPrefab>k__BackingField: {fileID: 7192375231403491953, guid: 2bb7c435fc610474c894687879470745, type: 3}
