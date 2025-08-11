@@ -49,5 +49,10 @@ namespace WOS.ActorControllers
             ability = null;
             return false;
         }
+
+        public bool ContainsAbility<T>() where T : class, IActorAbility
+        {
+            return abilities.ContainsKey(typeof(T));
+        }
     }
 }
