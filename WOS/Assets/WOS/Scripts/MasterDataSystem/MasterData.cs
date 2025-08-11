@@ -8,5 +8,8 @@ namespace WOS.MasterDataSystem
     {
         [field: SerializeField]
         public PlayerSpec PlayerSpec { get; private set; }
+
+        [field: SerializeField]
+        public ItemSpec.DictionaryList ItemSpecs { get; private set; }
     }
 }
