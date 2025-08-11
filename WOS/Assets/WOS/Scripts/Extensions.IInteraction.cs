@@ -1,0 +1,50 @@
+using System;
+using R3;
+using R3.Triggers;
+using UnityEngine;
+using WOS.ActorControllers;
+using WOS.ActorControllers.Abilities;
+
+namespace WOS
+{
+    public static class Extensions
+    {
+        public static IDisposable BeginObserveInteraction(this IInteraction self, Actor actor, Collider collider)
+        {
+            return new CompositeDisposable
+            {
+                collider
+                    .OnTriggerEnterAsObservable()
+                    .Subscribe((self, actor), static (x, t) =>
+                    {
+                        var (@this, actor) = t;
+                        if (x.attachedRigidbody == null)
+                        {
+                            return;
+                        }
+                        if (!x.attachedRigidbody.TryGetComponent<Actor>(out var collidedActor))
+                        {
+                            return;
+                        }
+                        collidedActor.GetAbility<ActorInteraction>().AddInteraction(@this);
+                    }),
+                collider
+                    .OnTriggerExitAsObservable()
+                    .Subscribe((self, actor), static (x, t) =>
+                    {
+                        var (@this, actor) = t;
+                        if (x.attachedRigidbody == null)
+                        {
+                            return;
+                        }
+                        if (!x.attachedRigidbody.TryGetComponent<Actor>(out var collidedActor))
+                        {
+                            return;
+                        }
+                        collidedActor.GetAbility<ActorInteraction>().RemoveInteraction(@this);
+                    })
+            };
+
+        }
+    }
+}
