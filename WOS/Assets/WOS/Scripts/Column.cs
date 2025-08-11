@@ -7,7 +7,7 @@ namespace WOS
     {
         private readonly List<bool> isFilleds = new();
 
-        void Start()
+        void Awake()
         {
             for (int i = 0; i < transform.childCount; i++)
             {
