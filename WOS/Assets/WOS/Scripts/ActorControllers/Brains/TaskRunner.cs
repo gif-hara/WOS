@@ -1,13 +1,25 @@
+using System.Collections.Generic;
 using System.Threading;
-using UnityEngine;
+using Cysharp.Threading.Tasks;
+using WOS.ActorControllers.TaskSystems;
 
 namespace WOS.ActorControllers.Brains
 {
     public sealed class TaskRunner : IActorBrain
     {
+        private readonly List<ITask> tasks = new();
+
         public void Activate(Actor actor, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            RunTasksAsync(actor, cancellationToken).Forget();
+        }
+
+        private async UniTask RunTasksAsync(Actor actor, CancellationToken cancellationToken)
+        {
+            foreach (var task in tasks)
+            {
+                await task.RunAsync(actor, cancellationToken);
+            }
         }
     }
 }
