@@ -9,15 +9,24 @@ namespace WOS.ActorControllers.Brains
     [Serializable]
     public sealed class Storage : IActorBrain, IInteraction
     {
+        [field: SerializeField]
+        private PlacementPoint placementPoint;
+
+        [field: SerializeField]
+        private string requireItemId;
+
         private Actor actor;
 
         public Transform Transform => actor.transform;
 
         private Collider Trigger => actor.Document.Q<Collider>("Trigger");
 
+        private Inventory inventory;
+
         public void Activate(Actor actor, CancellationToken cancellationToken)
         {
             this.actor = actor;
+            inventory = new Inventory(placementPoint);
             this.SubscribeOnTrigger(actor, Trigger)
                 .RegisterTo(cancellationToken);
         }
