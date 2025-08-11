@@ -53,7 +53,7 @@ namespace WOS
             return element;
         }
 
-        public int FindLastItem(string itemId)
+        public int FindLastItemIndex(string itemId)
         {
             for (var i = elements.Count - 1; i >= 0; i--)
             {
@@ -63,6 +63,19 @@ namespace WOS
                 }
             }
             return -1;
+        }
+
+        public int GetItemCount(string itemId)
+        {
+            var count = 0;
+            foreach (var element in elements)
+            {
+                if (element.ItemSpec.Id == itemId)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         public class Element
