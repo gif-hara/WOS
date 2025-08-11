@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using WOS.MasterDataSystem;
 
@@ -12,9 +13,9 @@ namespace WOS.ActorControllers.Abilities
             inventory = new Inventory(actor.Document.Q<PlacementPoint>("PlacementPoint"));
         }
 
-        public void AddItem(ItemSpec itemSpec, Item itemObject)
+        public void AddItems(List<Inventory.Element> elements)
         {
-            inventory.AddItem(itemSpec, itemObject);
+            inventory.AddItems(elements);
         }
     }
 }

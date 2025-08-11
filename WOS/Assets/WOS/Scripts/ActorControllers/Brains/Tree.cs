@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
@@ -74,6 +75,7 @@ namespace WOS.ActorControllers.Brains
             SceneViewStump.SetActive(true);
             Trigger.enabled = false;
             BeginRecoveryAsync(actor.destroyCancellationToken).Forget();
+            var inventoryElements = new List<Inventory.Element>();
             foreach (var itemDrop in ItemDrops)
             {
                 if (UnityEngine.Random.value < itemDrop.Probability)
@@ -82,10 +84,11 @@ namespace WOS.ActorControllers.Brains
                     for (var i = 0; i < itemDrop.Amount; i++)
                     {
                         var itemObject = UnityEngine.Object.Instantiate(itemSpec.ItemPrefab, actor.transform.position, Quaternion.identity);
-                        actor.GetAbility<ActorInventory>().AddItem(itemSpec, itemObject);
+                        inventoryElements.Add(new Inventory.Element(itemSpec, itemObject));
                     }
                 }
             }
+            actor.GetAbility<ActorInventory>().AddItems(inventoryElements);
         }
 
         private async UniTask BeginRecoveryAsync(CancellationToken cancellationToken)

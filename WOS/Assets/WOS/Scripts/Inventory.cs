@@ -17,16 +17,22 @@ namespace WOS
             this.placementPoint = placementPoint;
         }
 
-        public void AddItem(ItemSpec itemSpec, Item itemObject)
+        public void AddItems(List<Element> elements)
         {
-            Assert.IsNotNull(itemSpec, "ItemSpec cannot be null.");
-            Assert.IsNotNull(itemObject, "ItemObject cannot be null.");
-
-            var element = new Element(itemSpec, itemObject);
-            var point = placementPoint.Points[elements.Count % placementPoint.Points.Count];
-            var index = elements.Count;
-            element.ItemObject.BeginMoveAsync(() => new Vector3(point.position.x, point.position.y + (index / placementPoint.Points.Count * 0.25f), point.position.z), point, default).Forget();
-            elements.Add(element);
+            this.elements.AddRange(elements);
+            for (var i = 0; i < elements.Count; i++)
+            {
+                var index = this.elements.Count - elements.Count + i;
+                var element = elements[i];
+                var point = placementPoint.Points[index % placementPoint.Points.Count];
+                element.ItemObject.BeginMoveAsync(
+                    point,
+                    index / placementPoint.Points.Count,
+                    i * 0.1f,
+                    element.ItemObject.destroyCancellationToken
+                    )
+                    .Forget();
+            }
         }
 
         public class Element
