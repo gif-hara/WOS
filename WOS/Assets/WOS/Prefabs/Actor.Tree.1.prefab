@@ -250,7 +250,11 @@ MonoBehaviour:
     RefIds:
     - rid: 3715041496847089956
       type: {class: Tree, ns: WOS.ActorControllers.Brains, asm: Assembly-CSharp}
-      data: 
+      data:
+        <ItemDrops>k__BackingField:
+        - <Probability>k__BackingField: 1
+          <ItemId>k__BackingField: Wood
+          <Amount>k__BackingField: 1
 --- !u!114 &1965009226933194378 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1426947342277904789, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
