@@ -9,6 +9,11 @@ namespace WOS.ActorControllers.Brains
     {
         private readonly List<ITask> tasks = new();
 
+        public TaskRunner(IEnumerable<ITask> tasks)
+        {
+            this.tasks.AddRange(tasks);
+        }
+
         public void Activate(Actor actor, CancellationToken cancellationToken)
         {
             RunTasksAsync(actor, cancellationToken).Forget();
