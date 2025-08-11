@@ -33,37 +33,7 @@ namespace WOS.ActorControllers.Brains
             this.actor = actor;
             SceneViewTree.SetActive(true);
             SceneViewStump.SetActive(false);
-            Trigger
-                .OnTriggerEnterAsObservable()
-                .Subscribe((this, actor), static (x, t) =>
-                {
-                    var (@this, actor) = t;
-                    if (x.attachedRigidbody == null)
-                    {
-                        return;
-                    }
-                    if (!x.attachedRigidbody.TryGetComponent<Actor>(out var collidedActor))
-                    {
-                        return;
-                    }
-                    collidedActor.GetAbility<ActorInteraction>().AddInteraction(@this);
-                })
-                .RegisterTo(cancellationToken);
-            Trigger
-                .OnTriggerExitAsObservable()
-                .Subscribe((this, actor), static (x, t) =>
-                {
-                    var (@this, actor) = t;
-                    if (x.attachedRigidbody == null)
-                    {
-                        return;
-                    }
-                    if (!x.attachedRigidbody.TryGetComponent<Actor>(out var collidedActor))
-                    {
-                        return;
-                    }
-                    collidedActor.GetAbility<ActorInteraction>().RemoveInteraction(@this);
-                })
+            this.BeginObserveInteraction(actor, Trigger)
                 .RegisterTo(cancellationToken);
         }
 
