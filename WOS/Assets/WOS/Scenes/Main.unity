@@ -188,11 +188,39 @@ MonoBehaviour:
   - mode: 1
     unityReference: {fileID: 0}
     rawReference:
+      rid: 6255640882829852760
+  - mode: 1
+    unityReference: {fileID: 0}
+    rawReference:
       rid: 6255640876770394204
   - mode: 1
     unityReference: {fileID: 0}
     rawReference:
       rid: 6255640882829852748
+  spawnData:
+    taskRunnerPrefab: {fileID: 1965009226933194378, guid: c80d4fcdee16fc942a7a56f00d55151c, type: 3}
+    spawnPoint: {fileID: 96699187}
+    tasks:
+    - mode: 1
+      unityReference: {fileID: 0}
+      rawReference:
+        rid: 6255640882829852764
+    - mode: 1
+      unityReference: {fileID: 0}
+      rawReference:
+        rid: 6255640882829852766
+    - mode: 1
+      unityReference: {fileID: 0}
+      rawReference:
+        rid: 6255640882829852767
+    - mode: 1
+      unityReference: {fileID: 0}
+      rawReference:
+        rid: 6255640882829852768
+    - mode: 1
+      unityReference: {fileID: 0}
+      rawReference:
+        rid: 6255640882829852769
   references:
     version: 2
     RefIds:
@@ -216,6 +244,34 @@ MonoBehaviour:
         itemId: Wood
         needAmount: 4
         takeInterval: 0.1
+    - rid: 6255640882829852760
+      type: {class: DelaySeconds, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
+      data:
+        waitTime: 1
+    - rid: 6255640882829852764
+      type: {class: ProgressColumn, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
+      data:
+        column: {fileID: 2129507721}
+        moveSpeed: 5
+    - rid: 6255640882829852766
+      type: {class: FillInventory, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
+      data:
+        targetActor: {fileID: 3909564}
+        itemId: Wood
+        needAmount: 4
+        takeInterval: 0.1
+    - rid: 6255640882829852767
+      type: {class: DelaySeconds, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
+      data:
+        waitTime: 1
+    - rid: 6255640882829852768
+      type: {class: ProgressColumn, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
+      data:
+        column: {fileID: 2003252463}
+        moveSpeed: 5
+    - rid: 6255640882829852769
+      type: {class: DestroyActor, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
+      data: 
 --- !u!1 &208385316
 GameObject:
   m_ObjectHideFlags: 0

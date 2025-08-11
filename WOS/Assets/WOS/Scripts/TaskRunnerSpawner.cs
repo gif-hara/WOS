@@ -20,6 +20,9 @@ namespace WOS
         [field: SerializeField]
         private List<SerializableInterface<ITask>> tasks;
 
+        [field: SerializeField]
+        private TaskRunnerSpawnData spawnData;
+
         void Start()
         {
             SpawnTaskRunner();
