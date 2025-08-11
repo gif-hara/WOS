@@ -30,6 +30,8 @@ namespace WOS.ActorControllers.Brains
             actorMovement = actor.AddAbility<ActorMovement>();
             actor.AddAbility<ActorInteraction>();
             actor.AddAbility<ActorAnimation>();
+            actor.AddAbility<ActorInventory>();
+
             actor.UpdateAsObservable()
                 .Subscribe((this, actor), static (_, t) =>
                 {
