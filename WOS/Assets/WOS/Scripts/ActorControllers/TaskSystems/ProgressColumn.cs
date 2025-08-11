@@ -19,7 +19,7 @@ namespace WOS.ActorControllers.TaskSystems
         public async UniTask RunAsync(Actor actor, CancellationToken cancellationToken)
         {
             var oldColumnIndex = -1;
-            var columnIndex = column.GetFirstNotFilledIndex();
+            var columnIndex = column.GetLastNotFilledIndex();
             while (columnIndex >= 0 && !cancellationToken.IsCancellationRequested)
             {
                 while (column.IsFilled(columnIndex))
@@ -38,6 +38,8 @@ namespace WOS.ActorControllers.TaskSystems
                     column.SetFilled(oldColumnIndex, false);
                 }
                 column.SetFilled(columnIndex, true);
+
+                actor.transform.rotation = Quaternion.LookRotation(target.position - actor.transform.position);
 
                 await LMotion.Create(actor.transform.position, target.position, Vector3.Distance(actor.transform.position, target.position) / moveSpeed)
                     .BindToPosition(actor.transform)
