@@ -51,7 +51,7 @@ namespace WOS
             }
         }
 
-        public int FindItem(string itemId)
+        public int FindLastItem(string itemId)
         {
             for (var i = elements.Count - 1; i >= 0; i--)
             {
