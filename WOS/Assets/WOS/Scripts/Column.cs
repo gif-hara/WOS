@@ -35,9 +35,9 @@ namespace WOS
             return transform.GetChild(index);
         }
 
-        public int GetLastNotFilledIndex()
+        public int GetFirstNotFilledIndex()
         {
-            for (int i = isFilleds.Count - 1; i >= 0; i--)
+            for (int i = 0; i < isFilleds.Count; i++)
             {
                 if (!isFilleds[i])
                 {
@@ -45,6 +45,16 @@ namespace WOS
                 }
             }
             return -1; // No not filled column found
+        }
+
+        public bool IsFilled(int index)
+        {
+            if (index < 0 || index >= isFilleds.Count)
+            {
+                Debug.LogError($"Index {index} out of range for Column {name}");
+                return false;
+            }
+            return isFilleds[index];
         }
     }
 }
