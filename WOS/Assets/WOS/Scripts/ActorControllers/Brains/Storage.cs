@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using R3;
 using UnityEngine;
+using WOS.ActorControllers.Abilities;
 
 namespace WOS.ActorControllers.Brains
 {
@@ -31,10 +33,27 @@ namespace WOS.ActorControllers.Brains
                 .RegisterTo(cancellationToken);
         }
 
-        public UniTask InteractAsync(Actor interactedActor, CancellationToken cancellationToken)
+        public async UniTask InteractAsync(Actor interactedActor, CancellationToken cancellationToken)
         {
-            Debug.Log($"Storage Interact: {interactedActor.name}");
-            return UniTask.CompletedTask;
+            var interactedActorInventory = interactedActor.TryGetAbility<ActorInventory>(out var value) ? value : null;
+            if (interactedActorInventory == null)
+            {
+                return;
+            }
+
+            while (!cancellationToken.IsCancellationRequested)
+            {
+                await UniTask.Delay(TimeSpan.FromSeconds(0.1f), cancellationToken: cancellationToken);
+
+                var index = interactedActorInventory.Inventory.FindLastItem(requireItemId);
+                if (index == -1)
+                {
+                    continue;
+                }
+
+                var element = interactedActorInventory.Inventory.RemoveItem(index);
+                inventory.AddItems(new List<Inventory.Element> { element });
+            }
         }
     }
 }
