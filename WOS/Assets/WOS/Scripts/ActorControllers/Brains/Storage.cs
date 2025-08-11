@@ -31,9 +31,9 @@ namespace WOS.ActorControllers.Brains
                 .RegisterTo(cancellationToken);
         }
 
-        public UniTask InteractAsync(Actor actor, CancellationToken cancellationToken)
+        public UniTask InteractAsync(Actor interactedActor, CancellationToken cancellationToken)
         {
-            Debug.Log($"Storage Interact: {actor.name}");
+            Debug.Log($"Storage Interact: {interactedActor.name}");
             return UniTask.CompletedTask;
         }
     }

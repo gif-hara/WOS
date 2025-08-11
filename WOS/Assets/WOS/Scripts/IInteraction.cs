@@ -7,7 +7,7 @@ namespace WOS
 {
     public interface IInteraction
     {
-        UniTask InteractAsync(Actor actor, CancellationToken cancellationToken);
+        UniTask InteractAsync(Actor interactedActor, CancellationToken cancellationToken);
 
         Transform Transform { get; }
     }

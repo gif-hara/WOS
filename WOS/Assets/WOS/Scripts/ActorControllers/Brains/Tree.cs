@@ -37,14 +37,14 @@ namespace WOS.ActorControllers.Brains
                 .RegisterTo(cancellationToken);
         }
 
-        public async UniTask InteractAsync(Actor actor, CancellationToken cancellationToken)
+        public async UniTask InteractAsync(Actor interactedActor, CancellationToken cancellationToken)
         {
-            actor.GetAbility<ActorAnimation>().RequestAttack();
-            await actor.Router.AsObservable<ActorEvent.OnAttack>().FirstAsync(cancellationToken: cancellationToken);
+            interactedActor.GetAbility<ActorAnimation>().RequestAttack();
+            await interactedActor.Router.AsObservable<ActorEvent.OnAttack>().FirstAsync(cancellationToken: cancellationToken);
             SceneViewTree.SetActive(false);
             SceneViewStump.SetActive(true);
             Trigger.enabled = false;
-            BeginRecoveryAsync(actor.destroyCancellationToken).Forget();
+            BeginRecoveryAsync(interactedActor.destroyCancellationToken).Forget();
             var inventoryElements = new List<Inventory.Element>();
             foreach (var itemDrop in ItemDrops)
             {
@@ -58,7 +58,7 @@ namespace WOS.ActorControllers.Brains
                     }
                 }
             }
-            actor.GetAbility<ActorInventory>().AddItems(inventoryElements);
+            interactedActor.GetAbility<ActorInventory>().AddItems(inventoryElements);
         }
 
         private async UniTask BeginRecoveryAsync(CancellationToken cancellationToken)
