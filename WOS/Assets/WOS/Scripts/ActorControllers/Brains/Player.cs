@@ -15,7 +15,7 @@ namespace WOS.ActorControllers.Brains
 
         private readonly Camera camera;
 
-        private ActorMovementController movementController;
+        private ActorMovement actorMovement;
 
         public Player(PlayerSpec playerSpec, PlayerInput playerInput, Camera camera)
         {
@@ -26,7 +26,7 @@ namespace WOS.ActorControllers.Brains
 
         public void Activate(Actor actor, CancellationToken cancellationToken)
         {
-            movementController = actor.AddAbility<ActorMovementController>();
+            actorMovement = actor.AddAbility<ActorMovement>();
             actor.AddAbility<ActorInteractionController>();
             actor.AddAbility<ActorAnimationController>();
             actor.UpdateAsObservable()
@@ -44,8 +44,8 @@ namespace WOS.ActorControllers.Brains
                         right.y = 0;
                         right.Normalize();
                         var moveVelocity = forward * moveDirection.z + right * moveDirection.x;
-                        @this.movementController.Move(moveVelocity * @this.playerSpec.MoveSpeed * Time.deltaTime);
-                        @this.movementController.Rotate(Quaternion.LookRotation(moveVelocity));
+                        @this.actorMovement.Move(moveVelocity * @this.playerSpec.MoveSpeed * Time.deltaTime);
+                        @this.actorMovement.Rotate(Quaternion.LookRotation(moveVelocity));
                     }
                 })
                 .RegisterTo(actor.destroyCancellationToken);

@@ -52,7 +52,7 @@ namespace WOS.ActorControllers.Abilities
             try
             {
                 var scope = interactScope.Token;
-                actor.GetAbility<ActorMovementController>().BeginLookAt(interaction.Transform);
+                actor.GetAbility<ActorMovement>().BeginLookAt(interaction.Transform);
                 await interaction.InteractAsync(actor, scope);
                 if (!scope.IsCancellationRequested)
                 {
@@ -64,7 +64,7 @@ namespace WOS.ActorControllers.Abilities
             }
             finally
             {
-                actor.GetAbility<ActorMovementController>().EndLookAt();
+                actor.GetAbility<ActorMovement>().EndLookAt();
             }
         }
     }

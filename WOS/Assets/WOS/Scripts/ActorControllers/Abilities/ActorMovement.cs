@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 
 namespace WOS.ActorControllers.Abilities
 {
-    public class ActorMovementController : IActorAbility
+    public class ActorMovement : IActorAbility
     {
         private OpenCharacterController characterController;
 
