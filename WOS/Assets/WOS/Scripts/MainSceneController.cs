@@ -1,3 +1,4 @@
+using HK;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using WOS.ActorControllers;
@@ -23,6 +24,7 @@ namespace WOS
 
         void Start()
         {
+            TinyServiceLocator.Register(masterData);
             var playerBrain = new Player(masterData.PlayerSpec, playerInput, worldCamera);
             player.AddAbility<ActorBrain>().Change(playerBrain);
         }
