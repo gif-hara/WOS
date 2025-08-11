@@ -283,7 +283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3982311088053279130, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
       propertyPath: elements.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3982311088053279130, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
       propertyPath: elements.Array.data[0].document
@@ -296,7 +296,7 @@ PrefabInstance:
     - target: {fileID: 3982311088053279130, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
       propertyPath: elements.Array.data[2].document
       value: 
-      objectReference: {fileID: 3768099294723847104}
+      objectReference: {fileID: 2872866833754406896}
     - target: {fileID: 3982311088053279130, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
       propertyPath: elements.Array.data[3].document
       value: 
@@ -307,7 +307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3982311088053279130, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
       propertyPath: elements.Array.data[2].overrideName
-      value: Animator
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3982311088053279130, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
       propertyPath: elements.Array.data[3].overrideName
@@ -408,7 +408,6 @@ MonoBehaviour:
     - rid: 6255640876770394185
       type: {class: Storage, ns: WOS.ActorControllers.Brains, asm: Assembly-CSharp}
       data:
-        placementPoint: {fileID: 2101337951903764177}
         requireItemId: 
 --- !u!65 &7950744035853999884
 BoxCollider:
