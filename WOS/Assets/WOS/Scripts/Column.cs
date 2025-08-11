@@ -47,6 +47,18 @@ namespace WOS
             return -1; // No not filled column found
         }
 
+        public int GetLastNotFilledIndex()
+        {
+            for (int i = isFilleds.Count - 1; i >= 0; i--)
+            {
+                if (!isFilleds[i])
+                {
+                    return i;
+                }
+            }
+            return -1; // No not filled column found
+        }
+
         public bool IsFilled(int index)
         {
             if (index < 0 || index >= isFilleds.Count)
