@@ -58,7 +58,7 @@ namespace WOS.ActorControllers.Brains
                     }
                 }
             }
-            interactedActor.GetAbility<ActorInventory>().AddItems(inventoryElements);
+            interactedActor.GetAbility<ActorInventory>().Inventory.AddItems(inventoryElements);
         }
 
         private async UniTask BeginRecoveryAsync(CancellationToken cancellationToken)
