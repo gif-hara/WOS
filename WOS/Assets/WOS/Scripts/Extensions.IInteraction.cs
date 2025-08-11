@@ -9,7 +9,7 @@ namespace WOS
 {
     public static class Extensions
     {
-        public static IDisposable BeginObserveInteraction(this IInteraction self, Actor actor, Collider collider)
+        public static IDisposable SubscribeOnTrigger(this IInteraction self, Actor actor, Collider collider)
         {
             return new CompositeDisposable
             {

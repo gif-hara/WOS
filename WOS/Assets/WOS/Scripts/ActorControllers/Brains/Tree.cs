@@ -33,7 +33,7 @@ namespace WOS.ActorControllers.Brains
             this.actor = actor;
             SceneViewTree.SetActive(true);
             SceneViewStump.SetActive(false);
-            this.BeginObserveInteraction(actor, Trigger)
+            this.SubscribeOnTrigger(actor, Trigger)
                 .RegisterTo(cancellationToken);
         }
 
