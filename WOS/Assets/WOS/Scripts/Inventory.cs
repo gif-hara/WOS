@@ -35,6 +35,22 @@ namespace WOS
             }
         }
 
+        public void RemoveItem(int index)
+        {
+            Assert.IsTrue(index >= 0 && index < elements.Count, "Index out of range");
+            elements.RemoveAt(index);
+            for (var i = index; i < elements.Count; i++)
+            {
+                var point = placementPoint.Points[i % placementPoint.Points.Count];
+                elements[i].ItemObject.BeginMoveAsync(
+                    point,
+                    i / placementPoint.Points.Count,
+                    i * 0.1f,
+                    elements[i].ItemObject.destroyCancellationToken
+                ).Forget();
+            }
+        }
+
         public class Element
         {
             public ItemSpec ItemSpec { get; }
