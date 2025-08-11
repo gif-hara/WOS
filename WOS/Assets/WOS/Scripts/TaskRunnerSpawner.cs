@@ -15,6 +15,9 @@ namespace WOS
         private Actor taskRunnerPrefab;
 
         [field: SerializeField]
+        private Transform spawnPoint;
+
+        [field: SerializeField]
         private List<SerializableInterface<ITask>> tasks;
 
         void Start()
@@ -24,7 +27,7 @@ namespace WOS
 
         private void SpawnTaskRunner()
         {
-            var taskRunner = Instantiate(taskRunnerPrefab);
+            var taskRunner = Instantiate(taskRunnerPrefab, spawnPoint.position, spawnPoint.rotation);
             taskRunner.AddAbility<ActorBrain>().Change(new TaskRunner(tasks.Select(x => x.Value)));
         }
     }
