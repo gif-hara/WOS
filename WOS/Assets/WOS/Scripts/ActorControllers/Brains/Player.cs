@@ -31,10 +31,15 @@ namespace WOS.ActorControllers.Brains
                     var moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
                     if (moveDirection != Vector3.zero)
                     {
-                        moveDirection = @this.camera.transform.TransformDirection(moveDirection);
-                        moveDirection.y = 0; // Keep movement on the horizontal plane
-                        actor.MovementController.Move(moveDirection * @this.playerSpec.MoveSpeed * Time.deltaTime);
-                        actor.MovementController.Rotate(Quaternion.LookRotation(moveDirection));
+                        var forward = @this.camera.transform.forward;
+                        forward.y = 0;
+                        forward.Normalize();
+                        var right = @this.camera.transform.right;
+                        right.y = 0;
+                        right.Normalize();
+                        var moveVelocity = forward * moveDirection.z + right * moveDirection.x;
+                        actor.MovementController.Move(moveVelocity * @this.playerSpec.MoveSpeed * Time.deltaTime);
+                        actor.MovementController.Rotate(Quaternion.LookRotation(moveVelocity));
                     }
                 })
                 .RegisterTo(actor.destroyCancellationToken);
