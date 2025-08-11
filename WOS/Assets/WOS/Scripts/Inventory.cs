@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Assertions;
 using WOS.MasterDataSystem;
@@ -23,9 +24,8 @@ namespace WOS
 
             var element = new Element(itemSpec, itemObject);
             var point = placementPoint.Points[elements.Count % placementPoint.Points.Count];
-            element.ItemObject.transform.SetParent(point);
-            element.ItemObject.transform.localPosition = new Vector3(0, elements.Count / placementPoint.Points.Count * 0.25f, 0);
-            element.ItemObject.transform.localRotation = Quaternion.identity;
+            var index = elements.Count;
+            element.ItemObject.BeginMoveAsync(() => new Vector3(point.position.x, point.position.y + (index / placementPoint.Points.Count * 0.25f), point.position.z), point, default).Forget();
             elements.Add(element);
         }
 

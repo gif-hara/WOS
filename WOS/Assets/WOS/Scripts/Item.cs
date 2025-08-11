@@ -21,7 +21,7 @@ namespace WOS
                 .Bind(x => transform.position = Vector3.Lerp(fromPosition, toPositionSelector(), x))
                 .ToUniTask(moveScope.Token);
             transform.SetParent(parent);
-            transform.localPosition = Vector3.zero;
+            transform.position = toPositionSelector();
             transform.localRotation = Quaternion.identity;
         }
     }
