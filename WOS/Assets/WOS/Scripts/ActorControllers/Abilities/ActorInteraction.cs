@@ -64,7 +64,10 @@ namespace WOS.ActorControllers.Abilities
             }
             finally
             {
-                actor.GetAbility<ActorMovement>().EndLookAt();
+                if (actor != null)
+                {
+                    actor.GetAbility<ActorMovement>().EndLookAt();
+                }
             }
         }
     }
