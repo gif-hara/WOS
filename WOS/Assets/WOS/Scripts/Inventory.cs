@@ -16,7 +16,7 @@ namespace WOS
             this.placementPoint = placementPoint;
         }
 
-        public void AddItem(ItemSpec itemSpec, GameObject itemObject)
+        public void AddItem(ItemSpec itemSpec, Item itemObject)
         {
             Assert.IsNotNull(itemSpec, "ItemSpec cannot be null.");
             Assert.IsNotNull(itemObject, "ItemObject cannot be null.");
@@ -33,9 +33,9 @@ namespace WOS
         {
             public ItemSpec ItemSpec { get; }
 
-            public GameObject ItemObject { get; }
+            public Item ItemObject { get; }
 
-            public Element(ItemSpec itemSpec, GameObject itemObject)
+            public Element(ItemSpec itemSpec, Item itemObject)
             {
                 ItemSpec = itemSpec;
                 ItemObject = itemObject;

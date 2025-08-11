@@ -81,7 +81,7 @@ namespace WOS.ActorControllers.Brains
                     var itemSpec = TinyServiceLocator.Resolve<MasterData>().ItemSpecs.Get(itemDrop.ItemId);
                     for (var i = 0; i < itemDrop.Amount; i++)
                     {
-                        var itemObject = UnityEngine.Object.Instantiate(itemSpec.SceneViewPrefab);
+                        var itemObject = UnityEngine.Object.Instantiate(itemSpec.ItemPrefab);
                         actor.GetAbility<ActorInventory>().AddItem(itemSpec, itemObject);
                     }
                 }

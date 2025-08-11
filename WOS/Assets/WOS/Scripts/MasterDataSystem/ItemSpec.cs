@@ -11,7 +11,7 @@ namespace WOS.MasterDataSystem
         public string Id { get; private set; }
 
         [field: SerializeField]
-        public GameObject SceneViewPrefab { get; private set; }
+        public Item ItemPrefab { get; private set; }
 
         [Serializable]
         public class DictionaryList : DictionaryList<string, ItemSpec>

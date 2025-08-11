@@ -12,7 +12,7 @@ namespace WOS.ActorControllers.Abilities
             inventory = new Inventory(actor.Document.Q<PlacementPoint>("PlacementPoint"));
         }
 
-        public void AddItem(ItemSpec itemSpec, GameObject itemObject)
+        public void AddItem(ItemSpec itemSpec, Item itemObject)
         {
             inventory.AddItem(itemSpec, itemObject);
         }
