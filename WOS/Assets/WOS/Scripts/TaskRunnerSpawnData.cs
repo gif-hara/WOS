@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TNRD;
 using UnityEngine;
 using WOS.ActorControllers;
+using WOS.ActorControllers.Abilities;
+using WOS.ActorControllers.Brains;
 using WOS.ActorControllers.TaskSystems;
 
 namespace WOS
@@ -11,12 +14,18 @@ namespace WOS
     public class TaskRunnerSpawnData
     {
         [field: SerializeField]
-        private Actor taskRunnerPrefab;
+        public Actor TaskRunnerPrefab { get; private set; }
 
         [field: SerializeField]
-        private Transform spawnPoint;
+        public Transform SpawnPoint { get; private set; }
 
         [field: SerializeField]
-        private List<SerializableInterface<ITask>> tasks;
+        public List<SerializableInterface<ITask>> Tasks { get; private set; }
+
+        public void Spawn()
+        {
+            var taskRunner = UnityEngine.Object.Instantiate(TaskRunnerPrefab, SpawnPoint.position, SpawnPoint.rotation);
+            taskRunner.AddAbility<ActorBrain>().Change(new TaskRunner(Tasks.Select(x => x.Value)));
+        }
     }
 }
