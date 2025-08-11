@@ -4,6 +4,7 @@ using R3.Triggers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using WOS.ActorControllers.Abilities;
+using WOS.MasterDataSystem;
 
 namespace WOS.ActorControllers.Brains
 {

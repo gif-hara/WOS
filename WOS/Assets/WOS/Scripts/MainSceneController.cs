@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using WOS.ActorControllers;
 using WOS.ActorControllers.Abilities;
 using WOS.ActorControllers.Brains;
+using WOS.MasterDataSystem;
 
 namespace WOS
 {
