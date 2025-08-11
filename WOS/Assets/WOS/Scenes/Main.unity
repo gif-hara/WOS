@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &3909564 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1965009226933194378, guid: 9f1889f5c98fbed46ad090a0529f03b8, type: 3}
+  m_PrefabInstance: {fileID: 1585053631}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40777780a6d14bc45b8a08ab0ee0065a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &96699186
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,6 +184,10 @@ MonoBehaviour:
   - mode: 1
     unityReference: {fileID: 0}
     rawReference:
+      rid: 6255640882829852752
+  - mode: 1
+    unityReference: {fileID: 0}
+    rawReference:
       rid: 6255640876770394204
   - mode: 1
     unityReference: {fileID: 0}
@@ -194,6 +209,13 @@ MonoBehaviour:
     - rid: 6255640882829852748
       type: {class: DestroyActor, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
       data: 
+    - rid: 6255640882829852752
+      type: {class: FillInventory, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
+      data:
+        targetActor: {fileID: 3909564}
+        itemId: Wood
+        needAmount: 4
+        takeInterval: 0.1
 --- !u!1 &208385316
 GameObject:
   m_ObjectHideFlags: 0
