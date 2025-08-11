@@ -6,7 +6,7 @@ namespace WOS
     [Serializable]
     public class ItemDropData
     {
-        [field: SerializeField]
+        [field: SerializeField, Range(0, 1)]
         public float Probability { get; private set; }
 
         [field: SerializeField]
