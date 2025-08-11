@@ -51,6 +51,18 @@ namespace WOS
             }
         }
 
+        public int FindItem(string itemId)
+        {
+            for (var i = elements.Count - 1; i >= 0; i--)
+            {
+                if (elements[i].ItemSpec.Id == itemId)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
         public class Element
         {
             public ItemSpec ItemSpec { get; }
