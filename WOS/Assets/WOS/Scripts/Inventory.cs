@@ -35,9 +35,10 @@ namespace WOS
             }
         }
 
-        public void RemoveItem(int index)
+        public Element RemoveItem(int index)
         {
             Assert.IsTrue(index >= 0 && index < elements.Count, "Index out of range");
+            var element = elements[index];
             elements.RemoveAt(index);
             for (var i = index; i < elements.Count; i++)
             {
@@ -49,6 +50,7 @@ namespace WOS
                     elements[i].ItemObject.destroyCancellationToken
                 ).Forget();
             }
+            return element;
         }
 
         public int FindLastItem(string itemId)
