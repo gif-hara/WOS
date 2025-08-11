@@ -174,33 +174,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e2a6cc52882694591fe3716fa5c313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskRunnerPrefab: {fileID: 1965009226933194378, guid: c80d4fcdee16fc942a7a56f00d55151c, type: 3}
-  spawnPoint: {fileID: 96699187}
-  tasks:
-  - mode: 1
-    unityReference: {fileID: 0}
-    rawReference:
-      rid: 6255640880068952143
-  - mode: 1
-    unityReference: {fileID: 0}
-    rawReference:
-      rid: 6255640882829852752
-  - mode: 1
-    unityReference: {fileID: 0}
-    rawReference:
-      rid: 6255640882829852760
-  - mode: 1
-    unityReference: {fileID: 0}
-    rawReference:
-      rid: 6255640876770394204
-  - mode: 1
-    unityReference: {fileID: 0}
-    rawReference:
-      rid: 6255640882829852748
   spawnData:
-    taskRunnerPrefab: {fileID: 1965009226933194378, guid: c80d4fcdee16fc942a7a56f00d55151c, type: 3}
-    spawnPoint: {fileID: 96699187}
-    tasks:
+    <TaskRunnerPrefab>k__BackingField: {fileID: 1965009226933194378, guid: c80d4fcdee16fc942a7a56f00d55151c, type: 3}
+    <SpawnPoint>k__BackingField: {fileID: 96699187}
+    <Tasks>k__BackingField:
     - mode: 1
       unityReference: {fileID: 0}
       rawReference:
@@ -216,38 +193,28 @@ MonoBehaviour:
     - mode: 1
       unityReference: {fileID: 0}
       rawReference:
+        rid: 6255640882829852787
+    - mode: 1
+      unityReference: {fileID: 0}
+      rawReference:
         rid: 6255640882829852768
     - mode: 1
       unityReference: {fileID: 0}
       rawReference:
+        rid: 6255640882829852789
+    - mode: 1
+      unityReference: {fileID: 0}
+      rawReference:
         rid: 6255640882829852769
+  spawnInterval: 1
+  condition:
+    mode: 1
+    unityReference: {fileID: 0}
+    rawReference:
+      rid: 6255640882829852783
   references:
     version: 2
     RefIds:
-    - rid: 6255640876770394204
-      type: {class: ProgressColumn, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
-      data:
-        column: {fileID: 2003252463}
-        moveSpeed: 5
-    - rid: 6255640880068952143
-      type: {class: ProgressColumn, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
-      data:
-        column: {fileID: 2129507721}
-        moveSpeed: 5
-    - rid: 6255640882829852748
-      type: {class: DestroyActor, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
-      data: 
-    - rid: 6255640882829852752
-      type: {class: FillInventory, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
-      data:
-        targetActor: {fileID: 3909564}
-        itemId: Wood
-        needAmount: 4
-        takeInterval: 0.1
-    - rid: 6255640882829852760
-      type: {class: DelaySeconds, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
-      data:
-        waitTime: 1
     - rid: 6255640882829852764
       type: {class: ProgressColumn, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
       data:
@@ -272,6 +239,23 @@ MonoBehaviour:
     - rid: 6255640882829852769
       type: {class: DestroyActor, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
       data: 
+    - rid: 6255640882829852783
+      type: {class: IsAllFillColumn, ns: WOS.Common.Conditions, asm: Assembly-CSharp}
+      data:
+        column: {fileID: 2129507721}
+        isTrue: 0
+    - rid: 6255640882829852787
+      type: {class: ColumnSetFill, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
+      data:
+        column: {fileID: 2129507721}
+        index: 0
+        isFill: 0
+    - rid: 6255640882829852789
+      type: {class: ColumnSetFill, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
+      data:
+        column: {fileID: 2003252463}
+        index: 0
+        isFill: 0
 --- !u!1 &208385316
 GameObject:
   m_ObjectHideFlags: 0
