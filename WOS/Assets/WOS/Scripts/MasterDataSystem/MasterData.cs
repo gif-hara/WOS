@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace WOS
+namespace WOS.MasterDataSystem
 {
     [CreateAssetMenu(fileName = "MasterData", menuName = "WOS/MasterData", order = 1)]
     public class MasterData : ScriptableObject

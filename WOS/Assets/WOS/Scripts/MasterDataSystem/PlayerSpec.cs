@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace WOS
+namespace WOS.MasterDataSystem
 {
     [Serializable]
     public class PlayerSpec
