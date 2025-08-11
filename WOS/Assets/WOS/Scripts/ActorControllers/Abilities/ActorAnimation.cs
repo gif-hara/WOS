@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace WOS.ActorControllers.Abilities
 {
-    public class ActorAnimationController : IActorAbility
+    public class ActorAnimation : IActorAbility
     {
         private Animator animator;
 

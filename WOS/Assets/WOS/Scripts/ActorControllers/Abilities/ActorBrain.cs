@@ -3,7 +3,7 @@ using WOS.ActorControllers.Brains;
 
 namespace WOS.ActorControllers.Abilities
 {
-    public sealed class ActorBrainController : IActorAbility
+    public sealed class ActorBrain : IActorAbility
     {
         private Actor actor;
 

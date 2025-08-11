@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 
 namespace WOS.ActorControllers.Abilities
 {
-    public class ActorInteractionController : IActorAbility
+    public class ActorInteraction : IActorAbility
     {
         private Actor actor;
 

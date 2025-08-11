@@ -23,7 +23,7 @@ namespace WOS
         void Start()
         {
             var playerBrain = new Player(masterData.PlayerSpec, playerInput, worldCamera);
-            player.AddAbility<ActorBrainController>().Change(playerBrain);
+            player.AddAbility<ActorBrain>().Change(playerBrain);
         }
     }
 }

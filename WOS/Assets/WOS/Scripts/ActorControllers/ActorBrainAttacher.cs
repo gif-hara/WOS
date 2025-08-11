@@ -15,7 +15,7 @@ namespace WOS.ActorControllers
 
         void Start()
         {
-            actor.AddAbility<ActorBrainController>().Change(brain.Value);
+            actor.AddAbility<ActorBrain>().Change(brain.Value);
         }
     }
 }

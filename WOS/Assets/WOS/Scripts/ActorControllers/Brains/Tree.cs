@@ -40,7 +40,7 @@ namespace WOS.ActorControllers.Brains
                     {
                         return;
                     }
-                    collidedActor.GetAbility<ActorInteractionController>().AddInteraction(@this);
+                    collidedActor.GetAbility<ActorInteraction>().AddInteraction(@this);
                 })
                 .RegisterTo(cancellationToken);
             Trigger
@@ -56,7 +56,7 @@ namespace WOS.ActorControllers.Brains
                     {
                         return;
                     }
-                    collidedActor.GetAbility<ActorInteractionController>().RemoveInteraction(@this);
+                    collidedActor.GetAbility<ActorInteraction>().RemoveInteraction(@this);
                 })
                 .RegisterTo(cancellationToken);
         }
@@ -64,7 +64,7 @@ namespace WOS.ActorControllers.Brains
         public async UniTask InteractAsync(Actor actor, CancellationToken cancellationToken)
         {
             Debug.Log("Begin interaction with Tree");
-            actor.GetAbility<ActorAnimationController>().RequestAttack();
+            actor.GetAbility<ActorAnimation>().RequestAttack();
             await actor.Router.AsObservable<ActorEvent.OnAttack>().FirstAsync(cancellationToken: cancellationToken);
             SceneViewTree.SetActive(false);
             SceneViewStump.SetActive(true);

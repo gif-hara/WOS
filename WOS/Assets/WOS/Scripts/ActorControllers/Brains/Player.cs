@@ -27,8 +27,8 @@ namespace WOS.ActorControllers.Brains
         public void Activate(Actor actor, CancellationToken cancellationToken)
         {
             actorMovement = actor.AddAbility<ActorMovement>();
-            actor.AddAbility<ActorInteractionController>();
-            actor.AddAbility<ActorAnimationController>();
+            actor.AddAbility<ActorInteraction>();
+            actor.AddAbility<ActorAnimation>();
             actor.UpdateAsObservable()
                 .Subscribe((this, actor), static (_, t) =>
                 {
