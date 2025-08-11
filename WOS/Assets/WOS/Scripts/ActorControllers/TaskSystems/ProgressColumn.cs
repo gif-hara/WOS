@@ -18,9 +18,14 @@ namespace WOS.ActorControllers.TaskSystems
 
         public async UniTask RunAsync(Actor actor, CancellationToken cancellationToken)
         {
-            var columnIndex = column.GetLastNotFilledIndex();
-            while (columnIndex >= 0 || !cancellationToken.IsCancellationRequested)
+            var oldColumnIndex = -1;
+            var columnIndex = column.GetFirstNotFilledIndex();
+            while (columnIndex >= 0 && !cancellationToken.IsCancellationRequested)
             {
+                while (column.IsFilled(columnIndex))
+                {
+                    await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken);
+                }
                 var target = column.Get(columnIndex);
                 if (target == null)
                 {
@@ -28,13 +33,18 @@ namespace WOS.ActorControllers.TaskSystems
                     return;
                 }
 
+                if (oldColumnIndex != -1)
+                {
+                    column.SetFilled(oldColumnIndex, false);
+                }
                 column.SetFilled(columnIndex, true);
 
                 await LMotion.Create(actor.transform.position, target.position, Vector3.Distance(actor.transform.position, target.position) / moveSpeed)
                     .BindToPosition(actor.transform)
                     .ToUniTask(cancellationToken: cancellationToken);
 
-                columnIndex = column.GetLastNotFilledIndex();
+                oldColumnIndex = columnIndex;
+                columnIndex--;
             }
         }
     }
