@@ -26,7 +26,10 @@ namespace WOS
                         {
                             return;
                         }
-                        collidedActor.GetAbility<ActorInteraction>().AddInteraction(@this);
+                        if(collidedActor.TryGetAbility<ActorInteraction>(out var interaction))
+                        {
+                            interaction.AddInteraction(@this);
+                        }
                     }),
                 collider
                     .OnTriggerExitAsObservable()
@@ -41,7 +44,10 @@ namespace WOS
                         {
                             return;
                         }
-                        collidedActor.GetAbility<ActorInteraction>().RemoveInteraction(@this);
+                        if (collidedActor.TryGetAbility<ActorInteraction>(out var interaction))
+                        {
+                            interaction.RemoveInteraction(@this);
+                        }
                     })
             };
 
