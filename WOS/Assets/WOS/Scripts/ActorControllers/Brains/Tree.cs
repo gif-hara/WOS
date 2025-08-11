@@ -1,17 +1,22 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using HK;
 using R3;
 using R3.Triggers;
 using UnityEngine;
 using VitalRouter.R3;
 using WOS.ActorControllers.Abilities;
+using WOS.MasterDataSystem;
 
 namespace WOS.ActorControllers.Brains
 {
     [Serializable]
     public sealed class Tree : IActorBrain, IInteraction
     {
+        [field: SerializeField]
+        public ItemDropData[] ItemDrops { get; private set; }
+
         private Actor actor;
 
         public Transform Transform => actor.transform;
@@ -69,6 +74,18 @@ namespace WOS.ActorControllers.Brains
             SceneViewStump.SetActive(true);
             Trigger.enabled = false;
             BeginRecoveryAsync(actor.destroyCancellationToken).Forget();
+            foreach (var itemDrop in ItemDrops)
+            {
+                if (UnityEngine.Random.value < itemDrop.Probability)
+                {
+                    var itemSpec = TinyServiceLocator.Resolve<MasterData>().ItemSpecs.Get(itemDrop.ItemId);
+                    for (var i = 0; i < itemDrop.Amount; i++)
+                    {
+                        var itemObject = UnityEngine.Object.Instantiate(itemSpec.SceneViewPrefab);
+                        actor.GetAbility<ActorInventory>().AddItem(itemSpec, itemObject);
+                    }
+                }
+            }
         }
 
         private async UniTask BeginRecoveryAsync(CancellationToken cancellationToken)
