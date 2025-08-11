@@ -63,20 +63,17 @@ namespace WOS.ActorControllers.Brains
 
         public async UniTask InteractAsync(Actor actor, CancellationToken cancellationToken)
         {
-            Debug.Log("Begin interaction with Tree");
             actor.GetAbility<ActorAnimation>().RequestAttack();
             await actor.Router.AsObservable<ActorEvent.OnAttack>().FirstAsync(cancellationToken: cancellationToken);
             SceneViewTree.SetActive(false);
             SceneViewStump.SetActive(true);
             Trigger.enabled = false;
             BeginRecoveryAsync(actor.destroyCancellationToken).Forget();
-            Debug.Log("Interaction with Tree completed");
         }
 
         private async UniTask BeginRecoveryAsync(CancellationToken cancellationToken)
         {
-            Debug.Log("Begin recovery from Tree interaction");
-            await UniTask.Delay(3000, cancellationToken: cancellationToken); // Simulate recovery delay
+            await UniTask.Delay(3000, cancellationToken: cancellationToken);
             SceneViewTree.SetActive(true);
             SceneViewStump.SetActive(false);
             Trigger.enabled = true;
