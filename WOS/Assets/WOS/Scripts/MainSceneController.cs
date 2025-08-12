@@ -22,9 +22,13 @@ namespace WOS
         [field: SerializeField]
         private Camera worldCamera;
 
+        [field: SerializeField]
+        private AudioManager audioManager;
+
         void Start()
         {
             TinyServiceLocator.Register(masterData);
+            TinyServiceLocator.Register(audioManager);
             var playerBrain = new Player(masterData.PlayerSpec, playerInput, worldCamera);
             player.AddAbility<ActorBrain>().Change(playerBrain);
         }
