@@ -1224,7 +1224,11 @@ MonoBehaviour:
   bgm:
     list: []
   sfx:
-    list: []
+    list:
+    - key: Wood.1
+      clip: {fileID: 8300000, guid: 6733d859a452aa54a83f91aa86688e70, type: 3}
+    - key: Wood.2
+      clip: {fileID: 8300000, guid: e07af195ba28d6e4d9d4117d239b0631, type: 3}
 --- !u!1 &1159045821
 GameObject:
   m_ObjectHideFlags: 0
