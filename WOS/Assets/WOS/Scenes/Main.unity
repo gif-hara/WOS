@@ -1058,6 +1058,7 @@ MonoBehaviour:
   masterData: {fileID: 11400000, guid: da486c060ddcfee4ab8847fe6f52eeea, type: 2}
   playerInput: {fileID: 793972042}
   worldCamera: {fileID: 330585545}
+  audioManager: {fileID: 1139633689}
 --- !u!1001 &1002527375
 PrefabInstance:
   m_ObjectHideFlags: 0
