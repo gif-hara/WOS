@@ -29,6 +29,8 @@ namespace WOS
                     point,
                     index / placementPoint.Points.Count,
                     i * 0.1f,
+                    element.ItemSpec.BeginCollectSfxName,
+                    element.ItemSpec.EndCollectSfxName,
                     element.ItemObject.destroyCancellationToken
                     )
                     .Forget();
@@ -47,6 +49,8 @@ namespace WOS
                     point,
                     i / placementPoint.Points.Count,
                     i * 0.1f,
+                    "",
+                    "",
                     elements[i].ItemObject.destroyCancellationToken
                 ).Forget();
             }

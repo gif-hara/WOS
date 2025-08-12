@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using HK;
 using LitMotion;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace WOS
     {
         private CancellationTokenSource moveScope;
 
-        public async UniTask BeginMoveAsync(Transform parent, int heightIndex, float delaySeconds, CancellationToken cancellationToken)
+        public async UniTask BeginMoveAsync(Transform parent, int heightIndex, float delaySeconds, string beginSfxName, string endSfxName, CancellationToken cancellationToken)
         {
             moveScope?.Cancel();
             moveScope?.Dispose();
@@ -23,6 +24,13 @@ namespace WOS
             var yMax = Mathf.Max(fromPosition.y, heightIndex * 0.25f) + 2.0f;
             var fromRotation = transform.rotation;
             const float duration = 0.5f;
+            var audioManager = TinyServiceLocator.TryResolve<AudioManager>();
+
+            if (beginSfxName != null)
+            {
+                audioManager.PlaySfx(beginSfxName);
+            }
+
             await LSequence.Create()
                 .Join(
                     LMotion.Create(0.0f, 1.0f, duration)
@@ -71,6 +79,11 @@ namespace WOS
             transform.SetParent(parent);
             transform.localPosition = new Vector3(0, heightIndex * 0.25f, 0);
             transform.localRotation = Quaternion.identity;
+
+            if (endSfxName != null)
+            {
+                audioManager.PlaySfx(endSfxName);
+            }
         }
     }
 }
