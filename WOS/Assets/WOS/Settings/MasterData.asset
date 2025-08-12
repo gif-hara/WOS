@@ -18,3 +18,5 @@ MonoBehaviour:
     list:
     - <Id>k__BackingField: Wood
       <ItemPrefab>k__BackingField: {fileID: 7192375231403491953, guid: 2bb7c435fc610474c894687879470745, type: 3}
+      <BeginCollectSfxName>k__BackingField: Wood.1
+      <EndCollectSfxName>k__BackingField: Wood.1
