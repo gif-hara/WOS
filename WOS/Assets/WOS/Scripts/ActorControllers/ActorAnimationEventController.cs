@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using HK;
 using UnityEngine;
 
 namespace WOS.ActorControllers
@@ -20,6 +21,11 @@ namespace WOS.ActorControllers
             }
 
             actor.Router.PublishAsync(new ActorEvent.OnAttack(), actor.destroyCancellationToken).AsUniTask().Forget();
+        }
+
+        public void PlaySfx(string sfxName)
+        {
+            TinyServiceLocator.Resolve<AudioManager>().PlaySfx(sfxName);
         }
     }
 }
