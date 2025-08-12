@@ -13,6 +13,12 @@ namespace WOS.MasterDataSystem
         [field: SerializeField]
         public Item ItemPrefab { get; private set; }
 
+        [field: SerializeField]
+        public string BeginCollectSfxName { get; private set; }
+
+        [field: SerializeField]
+        public string EndCollectSfxName { get; private set; }
+
         [Serializable]
         public class DictionaryList : DictionaryList<string, ItemSpec>
         {
