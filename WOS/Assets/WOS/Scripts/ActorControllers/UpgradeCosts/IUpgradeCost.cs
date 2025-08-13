@@ -5,7 +5,5 @@ namespace WOS.ActorControllers.UpgradeCosts
         void BeginObserveView();
 
         bool IsEnough();
-
-        void InvokeUpgrade();
     }
 }
