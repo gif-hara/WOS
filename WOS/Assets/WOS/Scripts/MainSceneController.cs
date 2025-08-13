@@ -5,6 +5,7 @@ using WOS.ActorControllers;
 using WOS.ActorControllers.Abilities;
 using WOS.ActorControllers.Brains;
 using WOS.MasterDataSystem;
+using WOS.UIViews;
 
 namespace WOS
 {
@@ -25,6 +26,9 @@ namespace WOS
         [field: SerializeField]
         private AudioManager audioManager;
 
+        [field: SerializeField]
+        private HKUIDocument hudDocument;
+
         void Start()
         {
             TinyServiceLocator.Register(masterData);
@@ -32,6 +36,9 @@ namespace WOS
             TinyServiceLocator.Register("Player", player);
             var playerBrain = new Player(masterData.PlayerSpec, playerInput, worldCamera);
             player.AddAbility<ActorBrain>().Change(playerBrain);
+
+            var uiViewHUD = new UIViewHUD(hudDocument);
+            uiViewHUD.Activate(player);
         }
     }
 }
