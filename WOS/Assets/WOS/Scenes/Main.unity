@@ -189,6 +189,10 @@ MonoBehaviour:
     - mode: 1
       unityReference: {fileID: 0}
       rawReference:
+        rid: 6255640914008473693
+    - mode: 1
+      unityReference: {fileID: 0}
+      rawReference:
         rid: 6255640882829852767
     - mode: 1
       unityReference: {fileID: 0}
@@ -256,6 +260,11 @@ MonoBehaviour:
         column: {fileID: 2003252463}
         index: 0
         isFill: 0
+    - rid: 6255640914008473693
+      type: {class: AddMoney, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
+      data:
+        actorName: Player
+        amount: 60
 --- !u!1 &208385316
 GameObject:
   m_ObjectHideFlags: 0
