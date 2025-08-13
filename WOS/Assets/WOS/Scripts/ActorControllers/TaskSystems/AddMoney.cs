@@ -17,7 +17,7 @@ namespace WOS.ActorControllers.TaskSystems
         [field: SerializeField]
         private int amount;
 
-        public async UniTask RunAsync(Actor actor, CancellationToken cancellationToken)
+        public UniTask RunAsync(Actor actor, CancellationToken cancellationToken)
         {
             var target = TinyServiceLocator.Resolve<Actor>(actorName);
             Assert.IsNotNull(target, $"Actor {actorName} not found.");
@@ -25,6 +25,7 @@ namespace WOS.ActorControllers.TaskSystems
             {
                 inventory.AddMoney(amount);
             }
+            return UniTask.CompletedTask;
         }
     }
 }
