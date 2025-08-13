@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using HK;
 using TMPro;
 using UnityEngine;
@@ -18,14 +19,20 @@ namespace WOS.ActorControllers.UpgradeCosts
         [field: SerializeField]
         private int cost;
 
-        public void BeginObserveView()
+        public void BeginObserveView(CancellationToken cancellationToken)
         {
             text.text = cost.ToString();
         }
 
         public bool IsEnough()
         {
-            return TinyServiceLocator.Resolve<Actor>(actorName).GetAbility<ActorInventory>().Money >= cost;
+            return TinyServiceLocator.Resolve<Actor>(actorName).GetAbility<ActorInventory>().IsEnoughMoney(cost);
+        }
+
+        public void Consume()
+        {
+            var inventory = TinyServiceLocator.Resolve<Actor>(actorName).GetAbility<ActorInventory>();
+            inventory.ConsumeMoney(cost);
         }
     }
 }
