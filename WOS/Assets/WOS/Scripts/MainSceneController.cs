@@ -29,6 +29,7 @@ namespace WOS
         {
             TinyServiceLocator.Register(masterData);
             TinyServiceLocator.Register(audioManager);
+            TinyServiceLocator.Register("Player", player);
             var playerBrain = new Player(masterData.PlayerSpec, playerInput, worldCamera);
             player.AddAbility<ActorBrain>().Change(playerBrain);
         }
