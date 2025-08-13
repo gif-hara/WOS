@@ -1,0 +1,270 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2149712833848806796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8394091535668844439}
+  - component: {fileID: 1461107660622683844}
+  m_Layer: 7
+  m_Name: Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8394091535668844439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2149712833848806796}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7632190926939049961}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1461107660622683844
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2149712833848806796}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &1031741438909964692
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3629549442285823939}
+    m_Modifications:
+    - target: {fileID: 5357956043440106482, guid: 4ba0b2e5151c59f41a5fa0570b151994, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357956043440106482, guid: 4ba0b2e5151c59f41a5fa0570b151994, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357956043440106482, guid: 4ba0b2e5151c59f41a5fa0570b151994, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357956043440106482, guid: 4ba0b2e5151c59f41a5fa0570b151994, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357956043440106482, guid: 4ba0b2e5151c59f41a5fa0570b151994, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357956043440106482, guid: 4ba0b2e5151c59f41a5fa0570b151994, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357956043440106482, guid: 4ba0b2e5151c59f41a5fa0570b151994, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357956043440106482, guid: 4ba0b2e5151c59f41a5fa0570b151994, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357956043440106482, guid: 4ba0b2e5151c59f41a5fa0570b151994, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357956043440106482, guid: 4ba0b2e5151c59f41a5fa0570b151994, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998900815333693236, guid: 4ba0b2e5151c59f41a5fa0570b151994, type: 3}
+      propertyPath: m_Name
+      value: SceneView.Upgrade.Money.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4ba0b2e5151c59f41a5fa0570b151994, type: 3}
+--- !u!4 &4902788306286201446 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5357956043440106482, guid: 4ba0b2e5151c59f41a5fa0570b151994, type: 3}
+  m_PrefabInstance: {fileID: 1031741438909964692}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7774038933657558547 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7328364192940982151, guid: 4ba0b2e5151c59f41a5fa0570b151994, type: 3}
+  m_PrefabInstance: {fileID: 1031741438909964692}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &6244328997747961991
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -1152602945240121680, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145665151460682796, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: m_Name
+      value: Actor.Upgrade.Money.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982311088053279130, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: elements.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982311088053279130, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: elements.Array.data[0].document
+      value: 
+      objectReference: {fileID: 2149712833848806796}
+    - target: {fileID: 4558396081667932014, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4558396081667932014, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4558396081667932014, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4558396081667932014, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4558396081667932014, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4558396081667932014, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4558396081667932014, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4558396081667932014, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4558396081667932014, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4558396081667932014, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1355235936141589304, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+    - {fileID: 8243896889551104288, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4558396081667932014, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8394091535668844439}
+    - targetCorrespondingSourceObject: {fileID: 7275265990887855940, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4902788306286201446}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2145665151460682796, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6390578632840952175}
+  m_SourcePrefab: {fileID: 100100000, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+--- !u!4 &3629549442285823939 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7275265990887855940, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+  m_PrefabInstance: {fileID: 6244328997747961991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5000641759615236370 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1426947342277904789, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+  m_PrefabInstance: {fileID: 6244328997747961991}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435492038878403755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40777780a6d14bc45b8a08ab0ee0065a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &5435492038878403755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2145665151460682796, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+  m_PrefabInstance: {fileID: 6244328997747961991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6390578632840952175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435492038878403755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2eef2a9e2e47c4db83f09baab57c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: {fileID: 5000641759615236370}
+  brain:
+    mode: 1
+    unityReference: {fileID: 0}
+    rawReference:
+      rid: 6255640914008473709
+  references:
+    version: 2
+    RefIds:
+    - rid: 6255640914008473709
+      type: {class: Upgrade, ns: WOS.ActorControllers.Brains, asm: Assembly-CSharp}
+      data:
+        cost:
+          mode: 1
+          unityReference: {fileID: 0}
+          rawReference:
+            rid: 6255640914008473711
+        actions: []
+    - rid: 6255640914008473711
+      type: {class: Money, ns: WOS.ActorControllers.UpgradeCosts, asm: Assembly-CSharp}
+      data:
+        text: {fileID: 7774038933657558547}
+        actorName: Player
+        cost: 0
+--- !u!4 &7632190926939049961 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4558396081667932014, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
+  m_PrefabInstance: {fileID: 6244328997747961991}
+  m_PrefabAsset: {fileID: 0}
