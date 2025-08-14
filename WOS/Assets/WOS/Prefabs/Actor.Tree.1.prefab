@@ -392,11 +392,19 @@ MonoBehaviour:
         - mode: 1
           unityReference: {fileID: 0}
           rawReference:
-            rid: 6255640947424493829
-    - rid: 6255640947424493829
+            rid: 6255640947424493862
+        - mode: 1
+          unityReference: {fileID: 0}
+          rawReference:
+            rid: 6255640947424493863
+    - rid: 6255640947424493862
       type: {class: PlayLitMotionAnimation, ns: WOS.ReactionSystems, asm: Assembly-CSharp}
       data:
         target: {fileID: 8386603631790273806}
+    - rid: 6255640947424493863
+      type: {class: PlayParticleSystem, ns: WOS.ReactionSystems, asm: Assembly-CSharp}
+      data:
+        target: {fileID: 625247817588164780}
 --- !u!114 &1965009226933194378 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1426947342277904789, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
@@ -467,7 +475,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4250298743439401463, guid: 184c47b8b8e4c814d8241a901f177515, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.72
       objectReference: {fileID: 0}
     - target: {fileID: 4250298743439401463, guid: 184c47b8b8e4c814d8241a901f177515, type: 3}
       propertyPath: m_LocalPosition.z
@@ -546,6 +554,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 184c47b8b8e4c814d8241a901f177515, type: 3}
+--- !u!198 &625247817588164780 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4250298743439401353, guid: 184c47b8b8e4c814d8241a901f177515, type: 3}
+  m_PrefabInstance: {fileID: 3625762342355134757}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &625247817588164818 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4250298743439401463, guid: 184c47b8b8e4c814d8241a901f177515, type: 3}
