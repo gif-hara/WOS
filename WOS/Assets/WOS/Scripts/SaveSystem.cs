@@ -32,6 +32,17 @@ namespace WOS
             return JsonUtility.FromJson<T>(json);
         }
 
+        public static bool TryLoad<T>(string path, out T result)
+        {
+            result = default;
+            if (!Contains(path))
+            {
+                return false;
+            }
+            result = Load<T>(path);
+            return true;
+        }
+
         public static bool Contains(string path)
         {
             path = Application.persistentDataPath + "/" + path;
