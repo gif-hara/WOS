@@ -14,11 +14,12 @@ namespace WOS.ActorControllers.Brains
         [field: SerializeField]
         private string requireItemId;
 
+        [field: SerializeField]
+        private Collider interactionTrigger;
+
         private Actor actor;
 
         public Actor Actor => actor;
-
-        private Collider Trigger => actor.Document.Q<Collider>("Trigger");
 
         private ActorInventory actorInventory;
 
@@ -26,7 +27,7 @@ namespace WOS.ActorControllers.Brains
         {
             this.actor = actor;
             actorInventory = actor.AddAbility<ActorInventory>();
-            this.SubscribeOnTrigger(actor, Trigger)
+            this.SubscribeOnTrigger(actor, interactionTrigger)
                 .RegisterTo(cancellationToken);
         }
 
