@@ -405,6 +405,7 @@ MonoBehaviour:
       type: {class: PlayParticleSystem, ns: WOS.ReactionSystems, asm: Assembly-CSharp}
       data:
         target: {fileID: 625247817588164780}
+        withChildren: 1
 --- !u!114 &1965009226933194378 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1426947342277904789, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}

@@ -9,9 +9,12 @@ namespace WOS.ReactionSystems
         [field: SerializeField]
         private ParticleSystem target;
 
+        [field: SerializeField]
+        private bool withChildren = true;
+
         public UniTask InvokeAsync(CancellationToken cancellationToken)
         {
-            target.Play(true);
+            target.Play(withChildren);
             return UniTask.CompletedTask;
         }
     }
