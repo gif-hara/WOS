@@ -30,6 +30,12 @@ namespace WOS
             return stats.Contains(stat);
         }
 
+        public void RestoreFromSaveData(SaveData saveData)
+        {
+            stats.Clear();
+            stats.UnionWith(saveData.Stats);
+        }
+
         public IReadOnlyCollection<string> Stats => stats;
     }
 }
