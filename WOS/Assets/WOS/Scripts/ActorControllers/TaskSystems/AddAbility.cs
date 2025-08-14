@@ -30,9 +30,6 @@ namespace WOS.ActorControllers.TaskSystems
                     case Define.ActorAbilityType.Inventory:
                         actor.AddAbility<ActorInventory>();
                         break;
-                    case Define.ActorAbilityType.Attack:
-                        actor.AddAbility<ActorAttack>();
-                        break;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(abilityType), abilityType, null);
                 }
