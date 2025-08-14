@@ -43,6 +43,10 @@ namespace WOS
                     userData = new UserData();
                     userData.RestoreFromSaveData(saveData);
                 }
+                else
+                {
+                    userData = new UserData();
+                }
             }
             else
             {
