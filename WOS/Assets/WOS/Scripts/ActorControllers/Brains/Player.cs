@@ -31,6 +31,7 @@ namespace WOS.ActorControllers.Brains
             actor.AddAbility<ActorInteraction>();
             actor.AddAbility<ActorAnimation>();
             actor.AddAbility<ActorInventory>();
+            actor.AddAbility(new ActorAttack(playerSpec.AttackPower));
 
             actor.UpdateAsObservable()
                 .Subscribe((this, actor), static (_, t) =>
