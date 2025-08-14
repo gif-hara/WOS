@@ -23,25 +23,28 @@ namespace WOS.ActorControllers.Brains
         [field: SerializeField]
         public ItemDropData[] ItemDrops { get; private set; }
 
+        [field: SerializeField]
+        private GameObject sceneViewTree;
+
+        [field: SerializeField]
+        private GameObject sceneViewStump;
+
+        [field: SerializeField]
+        private Collider interactionTrigger;
+
         private Actor actor;
 
         private ActorStatus actorStatus;
 
         public Actor Actor => actor;
 
-        private GameObject SceneViewTree => actor.Document.Q("SceneView.Tree");
-
-        private GameObject SceneViewStump => actor.Document.Q("SceneView.Stump");
-
-        private Collider Trigger => actor.Document.Q<Collider>("Trigger");
-
         public void Activate(Actor actor, CancellationToken cancellationToken)
         {
             this.actor = actor;
             actorStatus = actor.AddAbility(new ActorStatus(hitPoint));
-            SceneViewTree.SetActive(true);
-            SceneViewStump.SetActive(false);
-            this.SubscribeOnTrigger(actor, Trigger)
+            sceneViewTree.SetActive(true);
+            sceneViewStump.SetActive(false);
+            this.SubscribeOnTrigger(actor, interactionTrigger)
                 .RegisterTo(cancellationToken);
             ProcessDieAsync(cancellationToken).Forget();
         }
@@ -61,8 +64,8 @@ namespace WOS.ActorControllers.Brains
             while (!cancellationToken.IsCancellationRequested)
             {
                 var onDie = await actor.Router.AsObservable<ActorEvent.OnDie>().FirstAsync(cancellationToken: cancellationToken);
-                SceneViewTree.SetActive(false);
-                SceneViewStump.SetActive(true);
+                sceneViewTree.SetActive(false);
+                sceneViewStump.SetActive(true);
                 var inventoryElements = new List<Inventory.Element>();
                 foreach (var itemDrop in ItemDrops)
                 {
@@ -78,8 +81,8 @@ namespace WOS.ActorControllers.Brains
                 }
                 onDie.AttackingActor.GetAbility<ActorInventory>().Inventory.AddItems(inventoryElements);
                 await UniTask.Delay(TimeSpan.FromSeconds(reviveDelaySeconds), cancellationToken: cancellationToken);
-                SceneViewTree.SetActive(true);
-                SceneViewStump.SetActive(false);
+                sceneViewTree.SetActive(true);
+                sceneViewStump.SetActive(false);
                 actorStatus.Revive();
             }
         }

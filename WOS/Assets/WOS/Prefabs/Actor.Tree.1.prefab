@@ -257,6 +257,9 @@ MonoBehaviour:
         - <Probability>k__BackingField: 1
           <ItemId>k__BackingField: Wood
           <Amount>k__BackingField: 3
+        sceneViewTree: {fileID: 3115099275511642758}
+        sceneViewStump: {fileID: 5740999447241328451}
+        interactionTrigger: {fileID: 8084800833262275555}
 --- !u!114 &1965009226933194378 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1426947342277904789, guid: fb62568de35594e47a52b170f1a3a4b2, type: 3}
