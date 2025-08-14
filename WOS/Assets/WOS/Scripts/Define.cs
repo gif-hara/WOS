@@ -9,7 +9,9 @@ namespace WOS
             Movement,
             Interaction,
             Animation,
-            Inventory
+            Inventory,
+            Attack,
+            Status,
         }
     }
 }
