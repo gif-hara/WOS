@@ -4,10 +4,12 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
 using R3;
+using TNRD;
 using UnityEngine;
 using VitalRouter.R3;
 using WOS.ActorControllers.Abilities;
 using WOS.MasterDataSystem;
+using WOS.ReactionSystems;
 
 namespace WOS.ActorControllers.Brains
 {
@@ -32,6 +34,9 @@ namespace WOS.ActorControllers.Brains
         [field: SerializeField]
         private Collider interactionTrigger;
 
+        [field: SerializeField]
+        private SerializableInterface<IReaction>[] onTakeDamageReactions;
+
         private Actor actor;
 
         private ActorStatus actorStatus;
@@ -47,6 +52,7 @@ namespace WOS.ActorControllers.Brains
             this.SubscribeOnTrigger(actor, interactionTrigger)
                 .RegisterTo(cancellationToken);
             ProcessDieAsync(cancellationToken).Forget();
+            ProcessOnTakeDamageAsync(cancellationToken).Forget();
         }
 
         public async UniTask InteractAsync(Actor interactedActor, CancellationToken cancellationToken)
@@ -84,6 +90,15 @@ namespace WOS.ActorControllers.Brains
                 sceneViewTree.SetActive(true);
                 sceneViewStump.SetActive(false);
                 actorStatus.Revive();
+            }
+        }
+
+        private async UniTask ProcessOnTakeDamageAsync(CancellationToken cancellationToken)
+        {
+            while (!cancellationToken.IsCancellationRequested)
+            {
+                await actor.Router.AsObservable<ActorEvent.OnTakeDamage>().FirstAsync(cancellationToken: cancellationToken);
+                onTakeDamageReactions.InvokeAsync(cancellationToken).Forget();
             }
         }
     }
