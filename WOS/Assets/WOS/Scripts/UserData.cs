@@ -1,9 +1,33 @@
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using VitalRouter;
 
 namespace WOS
 {
     public sealed class UserData
     {
-        public HashSet<string> Stats { get; } = new();
+        public Router Router { get; } = new();
+
+        private readonly HashSet<string> stats = new();
+
+        public void AddStat(string stat)
+        {
+            if (ContainsStat(stat))
+            {
+                return;
+            }
+            stats.Add(stat);
+            Router.PublishAsync(new UserEvent.AddedStat(stat)).AsUniTask().Forget();
+        }
+
+        public void RemoveStat(string stat)
+        {
+            stats.Remove(stat);
+        }
+
+        public bool ContainsStat(string stat)
+        {
+            return stats.Contains(stat);
+        }
     }
 }
