@@ -35,18 +35,10 @@ namespace WOS
 
         void Start()
         {
-            if (SaveSystem.Contains(SaveData.Path))
+            if (SaveSystem.TryLoad<SaveData>(SaveData.Path, out var saveData))
             {
-                var saveData = SaveSystem.Load<SaveData>(SaveData.Path);
-                if (saveData != null)
-                {
-                    userData = new UserData();
-                    userData.RestoreFromSaveData(saveData);
-                }
-                else
-                {
-                    userData = new UserData();
-                }
+                userData = new UserData();
+                userData.RestoreFromSaveData(saveData);
             }
             else
             {
