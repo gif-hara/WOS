@@ -38,5 +38,10 @@ namespace WOS.ActorControllers.Abilities
                 actor.Router.PublishAsync(new ActorEvent.OnDie(attackingActor)).AsUniTask().Forget();
             }
         }
+
+        public void Revive()
+        {
+            hitPoint = hitPointMax;
+        }
     }
 }
