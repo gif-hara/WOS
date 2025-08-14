@@ -7,5 +7,19 @@ namespace WOS.ActorControllers
         public readonly struct OnAttack : ICommand
         {
         }
+
+        public readonly struct OnTakeDamage : ICommand
+        {
+            public int Damage { get; }
+
+            public OnTakeDamage(int damage)
+            {
+                Damage = damage;
+            }
+        }
+
+        public readonly struct OnDie : ICommand
+        {
+        }
     }
 }
