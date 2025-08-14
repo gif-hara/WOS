@@ -57,11 +57,11 @@ namespace WOS.ActorControllers.Brains
 
         public async UniTask InteractAsync(Actor interactedActor, CancellationToken cancellationToken)
         {
-            if (interactedActor.TryGetAbility<ActorAttack>(out var actorAttack))
+            if (interactedActor.TryGetAbility<ActorAttack>(out var interactedActorAttack))
             {
-                actorAttack.AddTarget(actor);
+                interactedActorAttack.AddTarget(actor);
                 await UniTask.WaitUntilCanceled(cancellationToken);
-                actorAttack.RemoveTarget(actor);
+                interactedActorAttack.RemoveTarget(actor);
             }
         }
 
