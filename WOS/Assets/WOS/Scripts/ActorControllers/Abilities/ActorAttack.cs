@@ -59,6 +59,11 @@ namespace WOS.ActorControllers.Abilities
             }
         }
 
+        public bool ContainsTarget(Actor target)
+        {
+            return targets.Contains(target);
+        }
+
         private async UniTask AttackAsync(CancellationToken cancellationToken)
         {
             while (!cancellationToken.IsCancellationRequested)
