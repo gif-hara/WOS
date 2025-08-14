@@ -1,4 +1,6 @@
 using HK;
+using R3;
+using R3.Triggers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using WOS.ActorControllers;
@@ -39,6 +41,19 @@ namespace WOS
 
             var uiViewHUD = new UIViewHUD(hudDocument);
             uiViewHUD.Activate(player);
+
+#if DEBUG
+            this.UpdateAsObservable()
+                .Subscribe(_ =>
+                {
+                    if (Keyboard.current.f1Key.wasPressedThisFrame)
+                    {
+                        player.GetAbility<ActorInventory>()
+                            .AddMoney(1000000);
+                    }
+                })
+                .RegisterTo(destroyCancellationToken);
+#endif
         }
     }
 }
