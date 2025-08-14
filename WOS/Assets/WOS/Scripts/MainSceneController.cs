@@ -31,9 +31,12 @@ namespace WOS
         [field: SerializeField]
         private HKUIDocument hudDocument;
 
+        private UserData userData;
+
         void Start()
         {
-            TinyServiceLocator.Register(new UserData());
+            userData = new UserData();
+            TinyServiceLocator.Register(userData);
             TinyServiceLocator.Register(masterData);
             TinyServiceLocator.Register(audioManager);
             TinyServiceLocator.Register("Player", player);
@@ -52,9 +55,19 @@ namespace WOS
                         player.GetAbility<ActorInventory>()
                             .AddMoney(1000000);
                     }
+                    if (Keyboard.current.f2Key.wasPressedThisFrame)
+                    {
+                    }
                 })
                 .RegisterTo(destroyCancellationToken);
 #endif
+        }
+
+        void OnApplicationQuit()
+        {
+            var saveData = new SaveData();
+            saveData.Stats.AddRange(userData.Stats);
+            SaveSystem.Save(saveData, SaveData.Path);
         }
     }
 }
