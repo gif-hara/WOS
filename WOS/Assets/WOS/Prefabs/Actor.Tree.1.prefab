@@ -252,6 +252,7 @@ MonoBehaviour:
       type: {class: Tree, ns: WOS.ActorControllers.Brains, asm: Assembly-CSharp}
       data:
         hitPoint: 3
+        reviveDelaySeconds: 5
         <ItemDrops>k__BackingField:
         - <Probability>k__BackingField: 1
           <ItemId>k__BackingField: Wood
