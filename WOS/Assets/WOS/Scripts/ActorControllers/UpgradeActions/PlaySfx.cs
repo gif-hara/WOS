@@ -8,8 +8,12 @@ namespace WOS.ActorControllers.UpgradeActions
         [field: SerializeField]
         private string sfxName;
 
-        public void Execute()
+        public void Execute(bool restoreFromSaveData)
         {
+            if (restoreFromSaveData)
+            {
+                return;
+            }
             TinyServiceLocator.Resolve<AudioManager>().PlaySfx(sfxName);
         }
     }

@@ -32,7 +32,7 @@ namespace WOS.ActorControllers.Brains
             {
                 foreach (var action in actions)
                 {
-                    action.Value.Execute();
+                    action.Value.Execute(true);
                 }
                 actor.gameObject.SetActive(false);
             }
@@ -44,7 +44,7 @@ namespace WOS.ActorControllers.Brains
             {
                 foreach (var action in actions)
                 {
-                    action.Value.Execute();
+                    action.Value.Execute(false);
                 }
                 cost.Value.Consume();
                 actor.gameObject.SetActive(false);

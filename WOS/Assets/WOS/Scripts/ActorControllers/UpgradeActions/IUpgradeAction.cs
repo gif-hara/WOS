@@ -2,6 +2,6 @@ namespace WOS.ActorControllers.UpgradeActions
 {
     public interface IUpgradeAction
     {
-        void Execute();
+        void Execute(bool restoreFromSaveData);
     }
 }

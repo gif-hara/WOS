@@ -7,7 +7,7 @@ namespace WOS.ActorControllers.UpgradeActions
         [field: SerializeField]
         private TaskRunnerSpawnData spawnData;
 
-        public void Execute()
+        public void Execute(bool restoreFromSaveData)
         {
             spawnData.Spawn();
         }
