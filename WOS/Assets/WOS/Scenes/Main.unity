@@ -2854,7 +2854,7 @@ PrefabInstance:
     - target: {fileID: 6390578632840952175, guid: 981bab29e2541b840bee792116006c23, type: 3}
       propertyPath: managedReferences[6255640914008473724].spawnData.<TaskRunnerPrefab>k__BackingField
       value: 
-      objectReference: {fileID: 1965009226933194378, guid: c80d4fcdee16fc942a7a56f00d55151c, type: 3}
+      objectReference: {fileID: 1965009226933194378, guid: 962055428808b654faef0295117f0922, type: 3}
     - target: {fileID: 6390578632840952175, guid: 981bab29e2541b840bee792116006c23, type: 3}
       propertyPath: managedReferences[6255640914008473724].spawnData.<Tasks>k__BackingField.Array.size
       value: 3
