@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MH3
+namespace WOS
 {
     [Serializable]
     public class SaveData

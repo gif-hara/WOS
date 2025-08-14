@@ -1,7 +1,7 @@
 using System.IO;
 using UnityEngine;
 
-namespace MH3
+namespace WOS
 {
     /// <summary>
     /// 
