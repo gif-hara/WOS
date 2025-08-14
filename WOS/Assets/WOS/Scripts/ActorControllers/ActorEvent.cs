@@ -20,6 +20,12 @@ namespace WOS.ActorControllers
 
         public readonly struct OnDie : ICommand
         {
+            public Actor AttackingActor { get; }
+
+            public OnDie(Actor attackingActor)
+            {
+                AttackingActor = attackingActor;
+            }
         }
     }
 }

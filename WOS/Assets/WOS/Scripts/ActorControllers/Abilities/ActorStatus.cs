@@ -21,7 +21,7 @@ namespace WOS.ActorControllers.Abilities
             this.actor = actor;
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, Actor attackingActor)
         {
             if (hitPoint <= 0)
             {
@@ -33,7 +33,7 @@ namespace WOS.ActorControllers.Abilities
             if (hitPoint <= 0)
             {
                 hitPoint = 0;
-                actor.Router.PublishAsync(new ActorEvent.OnDie()).AsUniTask().Forget();
+                actor.Router.PublishAsync(new ActorEvent.OnDie(attackingActor)).AsUniTask().Forget();
             }
         }
     }
