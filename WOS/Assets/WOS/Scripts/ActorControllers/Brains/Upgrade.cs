@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using HK;
 using R3;
 using TNRD;
 using UnityEngine;
@@ -39,6 +40,7 @@ namespace WOS.ActorControllers.Brains
                 }
                 cost.Value.Consume();
                 actor.gameObject.SetActive(false);
+                TinyServiceLocator.Resolve<UserData>().AddStat(actor.name);
             }
             return UniTask.CompletedTask;
         }
