@@ -29,5 +29,7 @@ namespace WOS
         {
             return stats.Contains(stat);
         }
+
+        public IReadOnlyCollection<string> Stats => stats;
     }
 }
