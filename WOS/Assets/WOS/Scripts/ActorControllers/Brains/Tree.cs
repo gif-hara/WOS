@@ -18,6 +18,9 @@ namespace WOS.ActorControllers.Brains
         private int hitPoint;
 
         [field: SerializeField]
+        private float reviveDelaySeconds;
+
+        [field: SerializeField]
         public ItemDropData[] ItemDrops { get; private set; }
 
         private Actor actor;
@@ -40,27 +43,7 @@ namespace WOS.ActorControllers.Brains
             SceneViewStump.SetActive(false);
             this.SubscribeOnTrigger(actor, Trigger)
                 .RegisterTo(cancellationToken);
-            actor.Router.AsObservable<ActorEvent.OnDie>()
-                .Subscribe(this, static (x, @this) =>
-                {
-                    @this.SceneViewTree.SetActive(false);
-                    @this.SceneViewStump.SetActive(true);
-                    @this.BeginRecoveryAsync(@this.actor.destroyCancellationToken).Forget();
-                    var inventoryElements = new List<Inventory.Element>();
-                    foreach (var itemDrop in @this.ItemDrops)
-                    {
-                        if (UnityEngine.Random.value < itemDrop.Probability)
-                        {
-                            var itemSpec = TinyServiceLocator.Resolve<MasterData>().ItemSpecs.Get(itemDrop.ItemId);
-                            for (var i = 0; i < itemDrop.Amount; i++)
-                            {
-                                var itemObject = UnityEngine.Object.Instantiate(itemSpec.ItemPrefab, @this.actor.transform.position, Quaternion.identity);
-                                inventoryElements.Add(new Inventory.Element(itemSpec, itemObject));
-                            }
-                        }
-                    }
-                    x.AttackingActor.GetAbility<ActorInventory>().Inventory.AddItems(inventoryElements);
-                });
+            ProcessDieAsync(cancellationToken).Forget();
         }
 
         public async UniTask InteractAsync(Actor interactedActor, CancellationToken cancellationToken)
@@ -73,12 +56,32 @@ namespace WOS.ActorControllers.Brains
             }
         }
 
-        private async UniTask BeginRecoveryAsync(CancellationToken cancellationToken)
+        private async UniTask ProcessDieAsync(CancellationToken cancellationToken)
         {
-            await UniTask.Delay(3000, cancellationToken: cancellationToken);
-            SceneViewTree.SetActive(true);
-            SceneViewStump.SetActive(false);
-            actorStatus.Revive();
+            while (!cancellationToken.IsCancellationRequested)
+            {
+                var onDie = await actor.Router.AsObservable<ActorEvent.OnDie>().FirstAsync(cancellationToken: cancellationToken);
+                SceneViewTree.SetActive(false);
+                SceneViewStump.SetActive(true);
+                var inventoryElements = new List<Inventory.Element>();
+                foreach (var itemDrop in ItemDrops)
+                {
+                    if (UnityEngine.Random.value < itemDrop.Probability)
+                    {
+                        var itemSpec = TinyServiceLocator.Resolve<MasterData>().ItemSpecs.Get(itemDrop.ItemId);
+                        for (var i = 0; i < itemDrop.Amount; i++)
+                        {
+                            var itemObject = UnityEngine.Object.Instantiate(itemSpec.ItemPrefab, actor.transform.position, Quaternion.identity);
+                            inventoryElements.Add(new Inventory.Element(itemSpec, itemObject));
+                        }
+                    }
+                }
+                onDie.AttackingActor.GetAbility<ActorInventory>().Inventory.AddItems(inventoryElements);
+                await UniTask.Delay(TimeSpan.FromSeconds(reviveDelaySeconds), cancellationToken: cancellationToken);
+                SceneViewTree.SetActive(true);
+                SceneViewStump.SetActive(false);
+                actorStatus.Revive();
+            }
         }
     }
 }
