@@ -251,6 +251,7 @@ MonoBehaviour:
     - rid: 3715041496847089956
       type: {class: Tree, ns: WOS.ActorControllers.Brains, asm: Assembly-CSharp}
       data:
+        hitPoint: 3
         <ItemDrops>k__BackingField:
         - <Probability>k__BackingField: 1
           <ItemId>k__BackingField: Wood
