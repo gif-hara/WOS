@@ -6,7 +6,7 @@ using VitalRouter.R3;
 
 namespace WOS.ActorControllers.TaskSystems
 {
-    public sealed class WaitUntilActorDie : ITask
+    public sealed class WaitUntilTargetActorDie : ITask
     {
         [field: SerializeField]
         private Actor target;
