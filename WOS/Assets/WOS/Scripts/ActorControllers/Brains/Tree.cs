@@ -27,7 +27,7 @@ namespace WOS.ActorControllers.Brains
 
         private ActorStatus actorStatus;
 
-        public Transform Transform => actor.transform;
+        public Actor Actor => actor;
 
         private GameObject SceneViewTree => actor.Document.Q("SceneView.Tree");
 

@@ -9,6 +9,6 @@ namespace WOS
     {
         UniTask InteractAsync(Actor interactedActor, CancellationToken cancellationToken);
 
-        Transform Transform { get; }
+        Actor Actor { get; }
     }
 }

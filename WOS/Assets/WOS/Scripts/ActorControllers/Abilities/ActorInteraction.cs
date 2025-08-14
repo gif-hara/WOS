@@ -46,13 +46,18 @@ namespace WOS.ActorControllers.Abilities
             }
         }
 
+        public bool ContainsInteraction(IInteraction interaction)
+        {
+            return interactions.Contains(interaction);
+        }
+
         private async UniTask BeginInteraction(IInteraction interaction)
         {
             interactScope = CancellationTokenSource.CreateLinkedTokenSource(actor.destroyCancellationToken);
             try
             {
                 var scope = interactScope.Token;
-                actor.GetAbility<ActorMovement>().BeginLookAt(interaction.Transform);
+                actor.GetAbility<ActorMovement>().BeginLookAt(interaction.Actor.transform);
                 await interaction.InteractAsync(actor, scope);
                 if (!scope.IsCancellationRequested)
                 {

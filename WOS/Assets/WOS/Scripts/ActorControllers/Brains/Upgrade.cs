@@ -19,7 +19,7 @@ namespace WOS.ActorControllers.Brains
 
         private Actor actor;
 
-        public Transform Transform => actor.transform;
+        public Actor Actor => actor;
 
         public void Activate(Actor actor, CancellationToken cancellationToken)
         {

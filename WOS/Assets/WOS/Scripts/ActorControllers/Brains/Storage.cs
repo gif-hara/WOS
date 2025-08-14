@@ -16,7 +16,7 @@ namespace WOS.ActorControllers.Brains
 
         private Actor actor;
 
-        public Transform Transform => actor.transform;
+        public Actor Actor => actor;
 
         private Collider Trigger => actor.Document.Q<Collider>("Trigger");
 
