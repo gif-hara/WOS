@@ -7,7 +7,7 @@ using WOS.ActorControllers.Abilities;
 
 namespace WOS
 {
-    public static class Extensions
+    public static partial class Extensions
     {
         public static IDisposable SubscribeOnTrigger(this IInteraction self, Actor actor, Collider collider)
         {
