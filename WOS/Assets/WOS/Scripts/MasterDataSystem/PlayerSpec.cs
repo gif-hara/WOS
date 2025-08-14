@@ -8,5 +8,8 @@ namespace WOS.MasterDataSystem
     {
         [field: SerializeField]
         public float MoveSpeed { get; private set; }
+
+        [field: SerializeField]
+        public int AttackPower { get; private set; }
     }
 }
