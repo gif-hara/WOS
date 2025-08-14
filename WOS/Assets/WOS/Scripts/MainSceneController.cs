@@ -35,7 +35,19 @@ namespace WOS
 
         void Start()
         {
-            userData = new UserData();
+            if (SaveSystem.Contains(SaveData.Path))
+            {
+                var saveData = SaveSystem.Load<SaveData>(SaveData.Path);
+                if (saveData != null)
+                {
+                    userData = new UserData();
+                    userData.RestoreFromSaveData(saveData);
+                }
+            }
+            else
+            {
+                userData = new UserData();
+            }
             TinyServiceLocator.Register(userData);
             TinyServiceLocator.Register(masterData);
             TinyServiceLocator.Register(audioManager);
