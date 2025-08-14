@@ -4,7 +4,6 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
 using R3;
-using R3.Triggers;
 using UnityEngine;
 using VitalRouter.R3;
 using WOS.ActorControllers.Abilities;
@@ -16,9 +15,14 @@ namespace WOS.ActorControllers.Brains
     public sealed class Tree : IActorBrain, IInteraction
     {
         [field: SerializeField]
+        private int hitPoint;
+
+        [field: SerializeField]
         public ItemDropData[] ItemDrops { get; private set; }
 
         private Actor actor;
+
+        private ActorStatus actorStatus;
 
         public Transform Transform => actor.transform;
 
@@ -31,34 +35,42 @@ namespace WOS.ActorControllers.Brains
         public void Activate(Actor actor, CancellationToken cancellationToken)
         {
             this.actor = actor;
+            actorStatus = actor.AddAbility(new ActorStatus(hitPoint));
             SceneViewTree.SetActive(true);
             SceneViewStump.SetActive(false);
             this.SubscribeOnTrigger(actor, Trigger)
                 .RegisterTo(cancellationToken);
+            actor.Router.AsObservable<ActorEvent.OnDie>()
+                .Subscribe(this, static (x, @this) =>
+                {
+                    @this.SceneViewTree.SetActive(false);
+                    @this.SceneViewStump.SetActive(true);
+                    @this.BeginRecoveryAsync(@this.actor.destroyCancellationToken).Forget();
+                    var inventoryElements = new List<Inventory.Element>();
+                    foreach (var itemDrop in @this.ItemDrops)
+                    {
+                        if (UnityEngine.Random.value < itemDrop.Probability)
+                        {
+                            var itemSpec = TinyServiceLocator.Resolve<MasterData>().ItemSpecs.Get(itemDrop.ItemId);
+                            for (var i = 0; i < itemDrop.Amount; i++)
+                            {
+                                var itemObject = UnityEngine.Object.Instantiate(itemSpec.ItemPrefab, @this.actor.transform.position, Quaternion.identity);
+                                inventoryElements.Add(new Inventory.Element(itemSpec, itemObject));
+                            }
+                        }
+                    }
+                    x.AttackingActor.GetAbility<ActorInventory>().Inventory.AddItems(inventoryElements);
+                });
         }
 
         public async UniTask InteractAsync(Actor interactedActor, CancellationToken cancellationToken)
         {
-            interactedActor.GetAbility<ActorAnimation>().RequestAttack();
-            await interactedActor.Router.AsObservable<ActorEvent.OnAttack>().FirstAsync(cancellationToken: cancellationToken);
-            SceneViewTree.SetActive(false);
-            SceneViewStump.SetActive(true);
-            Trigger.enabled = false;
-            BeginRecoveryAsync(interactedActor.destroyCancellationToken).Forget();
-            var inventoryElements = new List<Inventory.Element>();
-            foreach (var itemDrop in ItemDrops)
+            if (interactedActor.TryGetAbility<ActorAttack>(out var actorAttack))
             {
-                if (UnityEngine.Random.value < itemDrop.Probability)
-                {
-                    var itemSpec = TinyServiceLocator.Resolve<MasterData>().ItemSpecs.Get(itemDrop.ItemId);
-                    for (var i = 0; i < itemDrop.Amount; i++)
-                    {
-                        var itemObject = UnityEngine.Object.Instantiate(itemSpec.ItemPrefab, this.actor.transform.position, Quaternion.identity);
-                        inventoryElements.Add(new Inventory.Element(itemSpec, itemObject));
-                    }
-                }
+                actorAttack.AddTarget(actor);
+                await UniTask.WaitUntilCanceled(cancellationToken);
+                actorAttack.RemoveTarget(actor);
             }
-            interactedActor.GetAbility<ActorInventory>().Inventory.AddItems(inventoryElements);
         }
 
         private async UniTask BeginRecoveryAsync(CancellationToken cancellationToken)
@@ -66,7 +78,7 @@ namespace WOS.ActorControllers.Brains
             await UniTask.Delay(3000, cancellationToken: cancellationToken);
             SceneViewTree.SetActive(true);
             SceneViewStump.SetActive(false);
-            Trigger.enabled = true;
+            actorStatus.Revive();
         }
     }
 }
