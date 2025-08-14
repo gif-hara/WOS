@@ -10,6 +10,8 @@ namespace WOS.ActorControllers.Abilities
 
         private int hitPoint;
 
+        public bool IsDead => hitPoint <= 0;
+
         public ActorStatus(int hitPoint)
         {
             hitPointMax = hitPoint;
