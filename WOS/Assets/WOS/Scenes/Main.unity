@@ -238,7 +238,7 @@ MonoBehaviour:
     - rid: 6255640882829852767
       type: {class: DelaySeconds, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
       data:
-        waitTime: 1
+        waitTime: 0.5
     - rid: 6255640882829852768
       type: {class: ProgressColumn, ns: WOS.ActorControllers.TaskSystems, asm: Assembly-CSharp}
       data:
@@ -2149,23 +2149,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6390578632840952175, guid: 981bab29e2541b840bee792116006c23, type: 3}
       propertyPath: managedReferences[6255640937653338230].chaseSpeed
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6390578632840952175, guid: 981bab29e2541b840bee792116006c23, type: 3}
       propertyPath: managedReferences[6255640937653338232].chaseSpeed
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6390578632840952175, guid: 981bab29e2541b840bee792116006c23, type: 3}
       propertyPath: managedReferences[6255640937653338234].chaseSpeed
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6390578632840952175, guid: 981bab29e2541b840bee792116006c23, type: 3}
       propertyPath: managedReferences[6255640937653338236].chaseSpeed
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6390578632840952175, guid: 981bab29e2541b840bee792116006c23, type: 3}
       propertyPath: managedReferences[6255640937653338238].chaseSpeed
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6390578632840952175, guid: 981bab29e2541b840bee792116006c23, type: 3}
       propertyPath: managedReferences[6255640937653338113].targetActor
