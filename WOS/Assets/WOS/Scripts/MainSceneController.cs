@@ -33,6 +33,7 @@ namespace WOS
 
         void Start()
         {
+            TinyServiceLocator.Register(new UserData());
             TinyServiceLocator.Register(masterData);
             TinyServiceLocator.Register(audioManager);
             TinyServiceLocator.Register("Player", player);
