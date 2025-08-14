@@ -28,6 +28,14 @@ namespace WOS.ActorControllers.Brains
             this.SubscribeOnTrigger(actor, actor.Document.Q<Collider>("Trigger"))
                 .RegisterTo(cancellationToken);
             cost.Value.BeginObserveView(cancellationToken);
+            if (TinyServiceLocator.Resolve<UserData>().ContainsStat(actor.name))
+            {
+                foreach (var action in actions)
+                {
+                    action.Value.Execute();
+                }
+                actor.gameObject.SetActive(false);
+            }
         }
 
         public UniTask InteractAsync(Actor interactedActor, CancellationToken cancellationToken)
