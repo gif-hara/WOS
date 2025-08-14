@@ -46,9 +46,16 @@ namespace WOS.ActorControllers.Abilities
             }
         }
 
-        public bool ContainsInteraction(IInteraction interaction)
+        public bool ContainsInteraction(Actor actor)
         {
-            return interactions.Contains(interaction);
+            foreach (var interaction in interactions)
+            {
+                if (interaction.Actor == actor)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private async UniTask BeginInteraction(IInteraction interaction)
