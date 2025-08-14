@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -80,6 +81,11 @@ namespace WOS
                 }
             }
             return count;
+        }
+
+        public UniTask WaitUntilInventoryEmpty(CancellationToken cancellationToken)
+        {
+            return UniTask.WaitUntil(() => elements.Count == 0, cancellationToken: cancellationToken);
         }
 
         public class Element
